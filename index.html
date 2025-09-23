@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Fahmi - Professional Data Analytics & Business Strategy Portfolio">
+    <title>Fahmi - Driving Business Growth Through Data & Strategy</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Theme Toggle Button -->
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+        <span class="sun-icon">☀️</span>
+        <span class="moon-icon">🌙</span>
+    </button>
+
+    <!-- Header with Navigation -->
+    <header class="navbar">
+        <nav class="nav-container">
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle mobile menu">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link active" onclick="showSection('home')" data-section="home">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#aboutme" class="nav-link" onclick="scrollToAboutMe()" data-section="aboutme">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#skills" class="nav-link" onclick="scrollToSkills()" data-section="skills">Skills</a>
+                </li>
+                
+                <!-- Logo di tengah -->
+                <li class="logo">
+                    <div class="logo-icon">F</div>
+                    <a href="#home">FAHMI</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="#experience" class="nav-link" onclick="scrollToExperience()" data-section="experience">Experience</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#achievement" class="nav-link" onclick="scrollToAchievement()" data-section="achievement">Achievement</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#contact" class="nav-link" onclick="scrollToContact()" data-section="contact">Contact</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Home Section -->
+        <section id="home" class="section active">
+            <div class="home-hero">
+                <div class="home-content">
+                    <h1>Hi, I'm <span class="text-accent">Fahmi</span></h1>
+                    <h2 class="typing-text">Driving Business Growth Through Data & Strategy</h2>
+                    <p>I bridge data and business strategy to deliver actionable insights, enabling smarter decisions, stronger market positioning, and long-term business success.</p>
+                    <div class="btn-group">
+                        <a href="#contact" class="btn btn-primary" onclick="scrollToContact()">Contact Me</a>
+                        <a href="#" class="btn btn-outline" download>Download Resume</a>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://linkedin.com/in/fahmi" title="LinkedIn">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                        </a>
+                        <a href="https://github.com/fahmi" title="GitHub">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                        </a>
+                        <a href="https://public.tableau.com/profile/fahmi" title="Tableau">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M11.654 5.234V.847h.692v4.387h4.615v.692h-4.615v4.387h-.692V5.926H6.693v-.692h4.96zm7.577 2.53v-1.615h.461v1.615h1.616v.461h-1.616v1.616h-.461V8.225h-1.615v-.461h1.615zM4.154 7.77v1.615h1.615v.461H4.154v1.616h-.461V9.846H2.077v-.461h1.616V7.77h.461zm15.077 2.77v4.387h.692v4.386h-4.615v-.693h4.615v-4.386h.692v4.386h4.616v.693h-4.616v4.386h-.692v-4.386H11.77v-.693h4.386v-4.386h.692v-4.387h4.616v.693h-4.616zm-7.577 0v.692h-4.96v4.387h-.692V11.54H1.385v-.692h4.616V6.461h.692v4.387h4.96zm3.692 7.156v-1.615h.461v1.615h1.616v.462h-1.616v1.615h-.461v-1.615h-1.615v-.462h1.615zM4.154 17.387v1.615h1.615v.461H4.154v1.615h-.461v-1.615H2.077v-.461h1.616v-1.615h.461zm7.5 1.847v4.386h.692v4.387h-4.615v-.693h4.615v-4.386h.692v4.386h4.616v.693h-4.616v4.387h-.692v-4.387H7.847v-.693h4.386v-4.386h.692v-4.387h4.616v.693h-4.616z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="home-image">
+                    <img src="images/fahmi.png" alt="Fahmi - Professional headshot" class="profile-img">
+                </div>
+            </div>
+            
+            <!-- About Me Section -->
+            <div class="about-section" id="aboutme">
+                <div class="container">
+                    <h3 class="section-title">About Me</h3>
+                    <div class="about-content-wrapper">
+                        <div class="about-image">
+                            <img src="images/about-me.png" alt="About Fahmi" class="about-img">
+                        </div>
+                        <div class="about-text">
+                            <p>Cum Laude graduate of Information Systems (GPA 3.68/4.00) with dual expertise in business analysis and data analytics. Proven ability to bridge business strategy with data-driven insights through hands-on experience at BCA Digital and Telkom Indonesia.</p>
+                            <p>Strong technical foundation in SQL, Python, and Tableau combined with business acumen in stakeholder management, market research, and process optimization. Successfully transformed complex data into actionable business recommendations while managing cross-functional projects for 200+ participants and analyzing market opportunities across 25+ potential clients.</p>
+                        </div>
+                    </div>
+
+                    <!-- Education -->
+                    <div class="education-wrapper">
+                        <h3 class="subsection-title">Education</h3>
+                        <div class="education-card">
+                            <div class="education-image">
+                                <img src="images/logo-telkom.png" alt="Telkom University" class="education-logo">
+                            </div>
+                            <div class="education-details">
+                                <h4>Telkom University</h4>
+                                <p class="major">Information Systems</p>
+                                <p class="gpa">GPA 3.68/4.00</p>
+                                <p class="years">2021 - 2025</p>
+                                <p class="description">Specialized in Business Analysis and Data Analytics with focus on digital transformation and information systems management.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Skills Section -->
+            <div class="skills-section" id="skills">
+                <div class="container">
+                    <h3 class="section-title">My Skills</h3>
+                    <h2 class="section-subtitle">My Expertise</h2>
+                    
+                    <div class="skills-grid">
+                        <div class="skill-card">
+                            <div class="skill-icon">📊</div>
+                            <h3>Market Research</h3>
+                            <p>Conducting comprehensive market analysis, competitive research, and consumer behavior studies to identify business opportunities and market trends.</p>
+                        </div>
+                        
+                        <div class="skill-card">
+                            <div class="skill-icon">⚙️</div>
+                            <h3>Business Process</h3>
+                            <p>Optimizing business workflows, process mapping, and operational efficiency improvements to drive organizational performance and cost reduction.</p>
+                        </div>
+                        
+                        <div class="skill-card">
+                            <div class="skill-icon">📋</div>
+                            <h3>Project Management</h3>
+                            <p>Agile, Scrum, Trello, Jira - Leading cross-functional teams and managing complex projects from initiation to delivery with proven methodologies.</p>
+                        </div>
+                        
+                        <div class="skill-card">
+                            <div class="skill-icon">🎯</div>
+                            <h3>Funnel Optimization</h3>
+                            <p>Analyzing and optimizing conversion funnels to improve customer acquisition, retention rates, and overall business performance metrics.</p>
+                        </div>
+                        
+                        <div class="skill-card">
+                            <div class="skill-icon">📊</div>
+                            <h3>Data Visualization</h3>
+                            <p>Tableau, Power BI, Excel - Creating compelling visual stories from complex datasets to enable data-driven decision making across organizations.</p>
+                        </div>
+                        
+                        <div class="skill-card">
+                            <div class="skill-icon">📢</div>
+                            <h3>Data Analytics</h3>
+                            <p>SQL, Python - Advanced statistical analysis, predictive modeling, and data mining to extract actionable insights from large datasets.</p>
+                        </div>
+                    </div>
+
+                    <!-- Tools Section -->
+                    <div class="tools-wrapper">
+                        <h3 class="subsection-title">Tools</h3>
+                        <div class="tools-grid">
+                            <div class="tool-item">
+                                <img src="https://logos-world.net/wp-content/uploads/2021/10/Tableau-Symbol.png" alt="Tableau" class="tool-logo">
+                                <span class="tool-name">Tableau</span>
+                            </div>
+                            <div class="tool-item">
+                                <img src="images/logo-excel.png" alt="Excel" class="tool-logo">
+                                <span class="tool-name">Excel</span>
+                            </div>
+                            <div class="tool-item">
+                                <img src="images/logo-powerbi.png" alt="Power BI" class="tool-logo">
+                                <span class="tool-name">Power BI</span>
+                            </div>
+                            <div class="tool-item">
+                                <img src="https://cdn.worldvectorlogo.com/logos/trello.svg" alt="Trello" class="tool-logo">
+                                <span class="tool-name">Trello</span>
+                            </div>
+                            <div class="tool-item">
+                                <img src="https://cdn.worldvectorlogo.com/logos/jira-1.svg" alt="Jira" class="tool-logo">
+                                <span class="tool-name">Jira</span>
+                            </div>
+                            <div class="tool-item">
+                                <img src="https://www.svgrepo.com/show/331760/sql-database-generic.svg" alt="SQL" class="tool-logo">
+                                <span class="tool-name">SQL</span>
+                            </div>
+                            <div class="tool-item">
+                                <img src="https://cdn.worldvectorlogo.com/logos/python-5.svg" alt="Python" class="tool-logo">
+                                <span class="tool-name">Python</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Experience Section -->
+            <div class="experience-section" id="experience">
+                <div class="container">
+                    <h3 class="section-title">Experience</h3>
+                    
+                    <div class="experience-tabs">
+                        <button class="tab-btn active" onclick="showExperienceTab('internship')" type="button">Internship</button>
+                        <button class="tab-btn" onclick="showExperienceTab('organization')" type="button">Organization</button>
+                        <button class="tab-btn" onclick="showExperienceTab('work')" type="button">Work</button>
+                    </div>
+
+                    <div class="tab-content" id="internship-tab">
+                        <div class="experience-grid">
+                            <div class="experience-card">
+                                <div class="experience-header">
+                                    <h3>Growth Acquisition Intern</h3>
+                                    <p class="company"><strong>BCA Digital</strong></p>
+                                    <time>January 2024 - February 2024</time>
+                                </div>
+                                <div class="experience-body">
+                                    <p>Analyzed business processes and developed data-driven recommendations for digital banking solutions. Collaborated with cross-functional teams to optimize customer experience and operational efficiency.</p>
+                                </div>
+                            </div>
+                            <div class="experience-card">
+                                <div class="experience-header">
+                                    <h3>Go To Market Intern</h3>
+                                    <p class="company"><strong>Telkom Indonesia</strong></p>
+                                    <time>August 2023 - December 2023</time>
+                                </div>
+                                <div class="experience-body">
+                                    <p>Performed comprehensive data analysis on telecommunications customer data. Created interactive dashboards and visualizations to support strategic decision-making processes.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-content" id="organization-tab" style="display: none;">
+                        <div class="experience-grid">
+                            <div class="experience-card">
+                                <div class="experience-header">
+                                    <h3>Project Manager</h3>
+                                    <p class="company"><strong>Information Systems Student Association</strong></p>
+                                    <time>2022 - 2023</time>
+                                </div>
+                                <div class="experience-body">
+                                    <p>Led cross-functional projects for 200+ participants, coordinating multiple teams and ensuring successful event execution. Implemented project management methodologies to improve organizational efficiency.</p>
+                                </div>
+                            </div>
+                            <div class="experience-card">
+                                <div class="experience-header">
+                                    <h3>Data Analytics Team Lead</h3>
+                                    <p class="company"><strong>University Research Group</strong></p>
+                                    <time>2021 - 2022</time>
+                                </div>
+                                <div class="experience-body">
+                                    <p>Managed data analytics projects and mentored junior team members. Developed data collection and analysis frameworks for academic research initiatives.</p>
+                                </div>
+                            </div>
+                            <div class="experience-card">
+                                <div class="experience-header">
+                                    <h3>Business Development Coordinator</h3>
+                                    <p class="company"><strong>Student Entrepreneur Club</strong></p>
+                                    <time>2020 - 2021</time>
+                                </div>
+                                <div class="experience-body">
+                                    <p>Facilitated partnerships with local businesses and organized networking events. Conducted market analysis to identify opportunities for student-led business ventures.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-content" id="work-tab" style="display: none;">
+                        <div class="experience-grid">
+                            <div class="experience-card coming-soon">
+                                <div class="experience-header">
+                                    <h3>Coming Soon</h3>
+                                    <p class="company"><strong>Professional Career</strong></p>
+                                    <time>2025 - Future</time>
+                                </div>
+                                <div class="experience-body">
+                                    <p>Currently seeking new opportunities to apply my skills in data analytics, business analysis, and strategic planning. Ready to contribute to innovative projects and drive business growth through data-driven insights.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Achievement Section -->
+            <div class="achievement-section" id="achievement">
+                <div class="container">
+                    <h3 class="section-title">Achievement</h3>
+                    
+                    <div class="achievement-tabs">
+                        <button class="achievement-tab-btn active" onclick="showAchievementTab('internship-cert')" type="button">Internship</button>
+                        <button class="achievement-tab-btn" onclick="showAchievementTab('course-cert')" type="button">Course</button>
+                        <button class="achievement-tab-btn" onclick="showAchievementTab('competition-cert')" type="button">Competition</button>
+                        <button class="achievement-tab-btn" onclick="showAchievementTab('organization-cert')" type="button">Organization</button>
+                        <button class="achievement-tab-btn" onclick="showAchievementTab('webinar-cert')" type="button">Webinar</button>
+                    </div>
+
+                    <div class="achievement-tab-content" id="internship-cert-tab">
+                        <div class="certificate-grid">
+                            <div class="certificate-item">
+                                <img src="images/cert-bca.jpg" alt="BCA Digital Internship Certificate" class="certificate-img">
+                            </div>
+                            <div class="certificate-item">
+                                <img src="images/cert-telkom.jpg" alt="Telkom Indonesia Internship Certificate" class="certificate-img">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="achievement-tab-content" id="course-cert-tab" style="display: none;">
+                        <div class="certificate-grid">
+                            <div class="certificate-item">
+                                <img src="images/cert-sql.jpg" alt="SQL Professional Certificate" class="certificate-img">
+                            </div>
+                            <div class="certificate-item">
+                                <img src="images/cert-datascience.jpg" alt="Data Science Fundamentals Certificate" class="certificate-img">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="achievement-tab-content" id="competition-cert-tab" style="display: none;">
+                        <div class="certificate-grid">
+                            <div class="certificate-item">
+                                <img src="images/cert-competition1.jpg" alt="Data Analytics Competition Certificate" class="certificate-img">
+                            </div>
+                            <div class="certificate-item">
+                                <img src="images/cert-competition2.jpg" alt="Business Case Competition Certificate" class="certificate-img">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="achievement-tab-content" id="organization-cert-tab" style="display: none;">
+                        <div class="certificate-grid">
+                            <div class="certificate-item">
+                                <img src="images/cert-project-manager.jpg" alt="Project Manager Certificate" class="certificate-img">
+                            </div>
+                            <div class="certificate-item">
+                                <img src="images/cert-team-lead.jpg" alt="Team Lead Certificate" class="certificate-img">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="achievement-tab-content" id="webinar-cert-tab" style="display: none;">
+                        <div class="certificate-grid">
+                            <div class="certificate-item">
+                                <img src="images/cert-webinar1.jpg" alt="Digital Transformation Webinar Certificate" class="certificate-img">
+                            </div>
+                            <div class="certificate-item">
+                                <img src="images/cert-webinar2.jpg" alt="Machine Learning Webinar Certificate" class="certificate-img">
+                            </div>
+                            <div class="certificate-item">
+                                <img src="images/cert-webinar3.jpg" alt="Business Intelligence Webinar Certificate" class="certificate-img">
+                            </div>
+                            <div class="certificate-item">
+                                <img src="images/cert-webinar4.jpg" alt="Cloud Computing Webinar Certificate" class="certificate-img">
+                            </div>
+                            <div class="certificate-item">
+                                <img src="images/cert-webinar5.jpg" alt="Data Mining Webinar Certificate" class="certificate-img">
+                            </div>
+                            <div class="certificate-item">
+                                <img src="images/cert-webinar6.jpg" alt="AI and Analytics Webinar Certificate" class="certificate-img">
+                            </div>
+                            <div class="certificate-item">
+                                <img src="images/cert-webinar7.jpg" alt="Big Data Analytics Webinar Certificate" class="certificate-img">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Why Choose Me Section -->
+            <div class="why-choose-section">
+                <div class="container">
+                    <h3 class="section-title">Why Choose Me</h3>
+                    
+                    <div class="qualities-grid">
+                        <div class="quality-card">
+                            <div class="quality-icon">🎯</div>
+                            <h4>Discipline</h4>
+                            <p>Consistently delivering high-quality work with strict adherence to deadlines and project requirements.</p>
+                        </div>
+                        
+                        <div class="quality-card">
+                            <div class="quality-icon">🔄</div>
+                            <h4>Quick Adaptation</h4>
+                            <p>Rapidly adjusting to new environments, technologies, and changing business requirements.</p>
+                        </div>
+                        
+                        <div class="quality-card">
+                            <div class="quality-icon">📚</div>
+                            <h4>Fast Learner</h4>
+                            <p>Quickly mastering new concepts, tools, and methodologies to stay ahead in the dynamic field of data analytics.</p>
+                        </div>
+                        
+                        <div class="quality-card">
+                            <div class="quality-icon">⏰</div>
+                            <h4>Time Management</h4>
+                            <p>Efficiently prioritizing tasks and managing multiple projects simultaneously while maintaining quality standards.</p>
+                        </div>
+                        
+                        <div class="quality-card">
+                            <div class="quality-icon">🤝</div>
+                            <h4>Flexibility</h4>
+                            <p>Adapting communication styles and working methods to collaborate effectively with diverse teams and stakeholders.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Section -->
+            <div class="contact-section" id="contact">
+                <div class="container">
+                    <h3 class="section-title">Get In Touch</h3>
+                    <div class="contact-wrapper">
+                        <p>I'm always interested in new opportunities and exciting projects. Let's discuss how we can work together to drive business growth through data-driven insights.</p>
+                        <div class="contact-info">
+                            <div class="contact-item">
+                                <h4>Email</h4>
+                                <a href="mailto:fahmi@example.com">fahmi@example.com</a>
+                            </div>
+                            <div class="contact-item">
+                                <h4>Phone</h4>
+                                <a href="tel:+621234567890">+62 123 456 7890</a>
+                            </div>
+                            <div class="contact-item">
+                                <h4>Location</h4>
+                                <p>Jakarta, Indonesia</p>
+                            </div>
+                        </div>
+                        <a href="mailto:fahmi@example.com" class="btn btn-primary">Send Message</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-top">
+            <h3>Let's Connect There</h3>
+            <a href="#contact" class="hire-me-btn">Contact Me →</a>
+        </div>
+
+        <div class="footer-content">
+            <!-- Logo -->
+            <div class="footer-logo">
+                <div class="logo">
+                    <div class="logo-icon">F</div>
+                    <a href="#home">FAHMI</a>
+                </div>
+            </div>
+
+            <!-- Navigation -->
+            <div class="footer-nav">
+                <h4>Navigation</h4>
+                <div class="footer-nav-links">
+                    <a href="#home">Home</a>
+                    <a href="#aboutme">About Me</a>
+                    <a href="#skills">Skills</a>
+                    <a href="#experience">Experience</a>
+                    <a href="#achievement">Achievement</a>
+                </div>
+            </div>
+
+            <!-- Social Media Icons -->
+            <div class="footer-social">
+                <h4>Connect With Me</h4>
+                <div class="social-icons">
+                    <a href="mailto:fahmi@example.com" title="Email">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.89 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                        </svg>
+                    </a>
+                    <a href="https://wa.me/621234567890" title="WhatsApp">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.465 3.488"/>
+                        </svg>
+                    </a>
+                    <a href="https://linkedin.com/in/fahmi" title="LinkedIn">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                        </svg>
+                    </a>
+                    <a href="https://github.com/fahmi" title="GitHub">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                    </a>
+                    <a href="https://public.tableau.com/profile/fahmi" title="Tableau">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M11.654 5.234V.847h.692v4.387h4.615v.692h-4.615v4.387h-.692V5.926H6.693v-.692h4.96zm7.577 2.53v-1.615h.461v1.615h1.616v.461h-1.616v1.616h-.461V8.225h-1.615v-.461h1.615zM4.154 7.77v1.615h1.615v.461H4.154v1.616h-.461V9.846H2.077v-.461h1.616V7.77h.461zm15.077 2.77v4.387h.692v4.386h-4.615v-.693h4.615v-4.386h.692v4.386h4.616v.693h-4.616v4.386h-.692v-4.386H11.77v-.693h4.386v-4.386h.692v-4.387h4.616v.693h-4.616zm-7.577 0v.692h-4.96v4.387h-.692V11.54H1.385v-.692h4.616V6.461h.692v4.387h4.96zm3.692 7.156v-1.615h.461v1.615h1.616v.462h-1.616v1.615h-.461v-1.615h-1.615v-.462h1.615zM4.154 17.387v1.615h1.615v.461H4.154v1.615h-.461v-1.615H2.077v-.461h1.616v-1.615h.461zm7.5 1.847v4.386h.692v4.387h-4.615v-.693h4.615v-4.386h.692v4.386h4.616v.693h-4.616v4.387h-.692v-4.387H7.847v-.693h4.386v-4.386h.692v-4.387h4.616v.693h-4.616z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2024 Fahmi. All Rights Reserved.</p>
+            <nav>
+                <a href="#">User Terms & Conditions</a> | 
+                <a href="#">Privacy Policy</a>
+            </nav>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
