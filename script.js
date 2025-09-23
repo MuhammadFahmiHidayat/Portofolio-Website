@@ -1,4 +1,4 @@
-// Enhanced Portfolio JavaScript with theme toggle and improved mobile layout
+// Enhanced Portfolio JavaScript with improved mobile responsiveness and timeline
 class PortfolioApp {
     constructor() {
         this.currentTheme = localStorage.getItem('theme') || 'light';
@@ -11,6 +11,7 @@ class PortfolioApp {
         this.initializeAnimations();
         this.handleHashChange();
         this.startTypingAnimation();
+        this.setupScrollableTabs();
     }
 
     setupTheme() {
@@ -47,6 +48,9 @@ class PortfolioApp {
         // Resize handling
         window.addEventListener('resize', () => this.handleWindowResize());
         
+        // Scroll handling for navbar
+        window.addEventListener('scroll', () => this.handleScroll());
+        
         // Mobile menu close on outside click
         document.addEventListener('click', (e) => this.closeMobileMenuOnOutsideClick(e));
         
@@ -65,10 +69,89 @@ class PortfolioApp {
         });
     }
 
+    handleScroll() {
+        // Check if we're at the top of the page (home section)
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const homeSection = document.querySelector('.home-hero');
+        
+        if (scrollTop < 100) {
+            // We're at the top, activate home
+            this.updateActiveNavLink('home');
+        } else {
+            // Check which section is currently in view
+            const sections = ['aboutme', 'skills', 'experience', 'achievement', 'contact'];
+            const navbarHeight = document.querySelector('.navbar').offsetHeight;
+            
+            for (let i = sections.length - 1; i >= 0; i--) {
+                const section = document.getElementById(sections[i]);
+                if (section) {
+                    const sectionTop = section.offsetTop - navbarHeight - 100;
+                    if (scrollTop >= sectionTop) {
+                        this.updateActiveNavLink(sections[i]);
+                        break;
+                    }
+                }
+            }
+        }
+    }
+
+    setupScrollableTabs() {
+        // Make achievement tabs scrollable with touch
+        const achievementTabs = document.querySelector('.achievement-tabs');
+        if (achievementTabs) {
+            let isScrolling = false;
+            let startX = 0;
+            let scrollLeft = 0;
+
+            achievementTabs.addEventListener('mousedown', (e) => {
+                isScrolling = true;
+                startX = e.pageX - achievementTabs.offsetLeft;
+                scrollLeft = achievementTabs.scrollLeft;
+                achievementTabs.style.cursor = 'grabbing';
+            });
+
+            achievementTabs.addEventListener('mouseleave', () => {
+                isScrolling = false;
+                achievementTabs.style.cursor = 'grab';
+            });
+
+            achievementTabs.addEventListener('mouseup', () => {
+                isScrolling = false;
+                achievementTabs.style.cursor = 'grab';
+            });
+
+            achievementTabs.addEventListener('mousemove', (e) => {
+                if (!isScrolling) return;
+                e.preventDefault();
+                const x = e.pageX - achievementTabs.offsetLeft;
+                const walk = (x - startX) * 2;
+                achievementTabs.scrollLeft = scrollLeft - walk;
+            });
+
+            // Touch events for mobile
+            achievementTabs.addEventListener('touchstart', (e) => {
+                startX = e.touches[0].pageX;
+                scrollLeft = achievementTabs.scrollLeft;
+            });
+
+            achievementTabs.addEventListener('touchmove', (e) => {
+                if (!startX) return;
+                const x = e.touches[0].pageX;
+                const walk = (x - startX) * 2;
+                achievementTabs.scrollLeft = scrollLeft - walk;
+            });
+
+            achievementTabs.addEventListener('touchend', () => {
+                startX = 0;
+            });
+        }
+    }
+
     initializeAnimations() {
         this.setupScrollAnimations();
         this.setupHoverAnimations();
         this.setupCardAnimations();
+        this.setupTimelineAnimations();
     }
 
     setupScrollAnimations() {
@@ -94,12 +177,55 @@ class PortfolioApp {
         // Observe all animatable elements
         const animatableElements = document.querySelectorAll(
             '.about-section, .skills-section, .experience-section, .achievement-section, .contact-section, .why-choose-section, ' +
-            '.skill-card, .experience-card, .certificate-item, .quality-card, .tool-item'
+            '.skill-card, .certificate-item, .quality-card, .tool-item, .timeline-item'
         );
         
         animatableElements.forEach(el => {
             el.classList.add('animate-element');
             observer.observe(el);
+        });
+
+        // Add special observer for home section to handle navbar
+        const homeObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Check if we're actually at the top home section
+                    const homeHero = document.querySelector('.home-hero');
+                    if (homeHero && this.isElementInViewport(homeHero)) {
+                        this.updateActiveNavLink('home');
+                    }
+                }
+            });
+        }, { threshold: 0.3 });
+
+        const homeSection = document.querySelector('.home-hero');
+        if (homeSection) {
+            homeObserver.observe(homeSection);
+        }
+    }
+
+    // Helper function to check if element is in viewport
+    isElementInViewport(element) {
+        const rect = element.getBoundingClientRect();
+        return (
+            rect.top >= 0 &&
+            rect.left >= 0 &&
+            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+            rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+        );
+    }
+
+    setupTimelineAnimations() {
+        const timelineObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-timeline');
+                }
+            });
+        }, { threshold: 0.3 });
+
+        document.querySelectorAll('.timeline-item').forEach(item => {
+            timelineObserver.observe(item);
         });
     }
 
@@ -205,7 +331,7 @@ class PortfolioApp {
         }, observerOptions);
 
         // Apply staggered animation to grids
-        document.querySelectorAll('.skills-grid, .qualities-grid, .certificate-grid, .tools-grid, .experience-grid').forEach(grid => {
+        document.querySelectorAll('.skills-grid, .qualities-grid, .certificate-grid, .tools-grid').forEach(grid => {
             Array.from(grid.children).forEach(child => {
                 child.style.opacity = '0';
                 child.style.transform = 'translateY(20px)';
@@ -392,6 +518,16 @@ class PortfolioApp {
                 targetTab.style.opacity = '1';
                 targetTab.style.transform = 'translateY(0)';
             }, 10);
+
+            // Trigger timeline animation
+            setTimeout(() => {
+                const timelineItems = targetTab.querySelectorAll('.timeline-item');
+                timelineItems.forEach((item, index) => {
+                    setTimeout(() => {
+                        item.classList.add('animate-timeline');
+                    }, index * 200);
+                });
+            }, 100);
         }
         
         // Update active button
