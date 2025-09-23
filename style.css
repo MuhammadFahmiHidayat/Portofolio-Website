@@ -1010,20 +1010,23 @@ body {
 /* Certificate Grid - Mobile Responsive */
 .certificate-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: var(--space-8);
 }
 
 .certificate-item {
     background: var(--bg-card);
     border-radius: var(--border-radius-lg);
-    padding: var(--space-6);
+    padding: var(--space-4);
     text-align: center;
     transition: var(--transition);
     box-shadow: var(--shadow-md);
     overflow: hidden;
     border: 1px solid rgba(253, 133, 58, 0.1);
     backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .certificate-item:hover {
@@ -1034,8 +1037,9 @@ body {
 
 .certificate-img {
     width: 100%;
-    height: 200px;
-    object-fit: cover;
+    height: auto;        /* fleksibel, ikut rasio asli gambar */
+    object-fit: contain; /* pastikan gambar utuh */
+    background: #fff;    /* untuk area kosong */
     border-radius: var(--border-radius);
     box-shadow: var(--shadow-sm);
     transition: var(--transition);
