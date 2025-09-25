@@ -1,17 +1,118 @@
-// Enhanced Portfolio JavaScript with improved mobile responsiveness and timeline
+// Enhanced Portfolio JavaScript with all new features
 class PortfolioApp {
     constructor() {
         this.currentTheme = localStorage.getItem('theme') || 'light';
+        this.currentLightboxIndex = 0;
+        this.lightboxImages = [];
+        this.backgroundState = 0; // For smooth gradient changes
         this.init();
     }
 
     init() {
+        this.showPreloader();
         this.setupTheme();
         this.setupEventListeners();
         this.initializeAnimations();
         this.handleHashChange();
-        this.startTypingAnimation();
+        this.setupLightbox();
         this.setupScrollableTabs();
+        this.setupSmoothGradientChange();
+    }
+
+    // Preloader Animation
+    showPreloader() {
+        const preloader = document.getElementById('preloader');
+        const loadingFill = document.querySelector('.loading-fill');
+        const logoPreloader = document.querySelector('.logo-preloader');
+        
+        // Start loading animation
+        let progress = 0;
+        const interval = setInterval(() => {
+            progress += Math.random() * 15 + 5;
+            if (progress >= 100) {
+                progress = 100;
+                clearInterval(interval);
+                
+                // Hide preloader after loading completes
+                setTimeout(() => {
+                    preloader.classList.add('fade-out');
+                    setTimeout(() => {
+                        preloader.style.display = 'none';
+                        this.startLetterAnimation();
+                        this.startTypingAnimation();
+                    }, 500);
+                }, 300);
+            }
+            loadingFill.style.width = progress + '%';
+        }, 100);
+
+        // Rotate logo during loading
+        logoPreloader.style.animation = 'spin 2s linear infinite';
+    }
+
+    // Letter by letter animation for headline
+    startLetterAnimation() {
+        const letterElement = document.querySelector('.letter-animate');
+        if (!letterElement) return;
+
+        const text = letterElement.innerHTML;
+        letterElement.innerHTML = '';
+        letterElement.style.opacity = '1';
+
+        // Split text into individual letters while preserving HTML tags
+        const letters = [];
+        let inTag = false;
+        let tagBuffer = '';
+        
+        for (let i = 0; i < text.length; i++) {
+            const char = text[i];
+            
+            if (char === '<') {
+                inTag = true;
+                tagBuffer = char;
+            } else if (char === '>' && inTag) {
+                inTag = false;
+                tagBuffer += char;
+                letters.push(tagBuffer);
+                tagBuffer = '';
+            } else if (inTag) {
+                tagBuffer += char;
+            } else if (char === ' ') {
+                letters.push('<span class="letter">&nbsp;</span>');
+            } else {
+                letters.push(`<span class="letter" style="opacity: 0; transform: translateY(20px);">${char}</span>`);
+            }
+        }
+
+        letterElement.innerHTML = letters.join('');
+
+        // Animate letters one by one
+        const letterSpans = letterElement.querySelectorAll('.letter');
+        letterSpans.forEach((letter, index) => {
+            if (letter.innerHTML !== '&nbsp;') {
+                setTimeout(() => {
+                    letter.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+                    letter.style.opacity = '1';
+                    letter.style.transform = 'translateY(0)';
+                }, index * 50);
+            }
+        });
+    }
+
+    setupSmoothGradientChange() {
+        // Smooth background gradient animation
+        document.body.style.background = 'linear-gradient(135deg, var(--bg-light) 0%, var(--bg-light) 50%, rgba(253, 133, 58, 0.05) 100%)';
+        
+        // Animate gradient on scroll
+        window.addEventListener('scroll', () => {
+            const scrollPercent = Math.min(window.scrollY / (document.body.scrollHeight - window.innerHeight), 1);
+            const hue = 200 + (scrollPercent * 160); // From blue to orange
+            const opacity = 0.03 + (scrollPercent * 0.07);
+            
+            document.documentElement.style.setProperty('--dynamic-bg', 
+                `linear-gradient(135deg, var(--bg-light) 0%, var(--bg-light) ${50 + scrollPercent * 30}%, hsla(${hue}, 70%, 60%, ${opacity}) 100%)`
+            );
+        });
     }
 
     setupTheme() {
@@ -20,17 +121,25 @@ class PortfolioApp {
     }
 
     updateThemeIcon() {
-        const themeToggle = document.querySelector('.theme-toggle');
-        const sunIcon = themeToggle.querySelector('.sun-icon');
-        const moonIcon = themeToggle.querySelector('.moon-icon');
+        const themeContainer = document.querySelector('.theme-icon-container');
+        const sunIcon = themeContainer.querySelector('.sun-icon');
+        const moonIcon = themeContainer.querySelector('.moon-icon');
         
-        if (this.currentTheme === 'dark') {
-            sunIcon.style.display = 'block';
-            moonIcon.style.display = 'none';
-        } else {
-            sunIcon.style.display = 'none';
-            moonIcon.style.display = 'block';
-        }
+        // Add rotation animation
+        themeContainer.style.transition = 'transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+        themeContainer.style.transform = 'rotate(360deg)';
+        
+        setTimeout(() => {
+            if (this.currentTheme === 'dark') {
+                sunIcon.style.display = 'block';
+                moonIcon.style.display = 'none';
+            } else {
+                sunIcon.style.display = 'none';
+                moonIcon.style.display = 'block';
+            }
+            
+            themeContainer.style.transform = 'rotate(0deg)';
+        }, 250);
     }
 
     toggleTheme() {
@@ -48,14 +157,20 @@ class PortfolioApp {
         // Resize handling
         window.addEventListener('resize', () => this.handleWindowResize());
         
-        // Scroll handling for navbar
-        window.addEventListener('scroll', () => this.handleScroll());
+        // Scroll handling for navbar and timeline
+        window.addEventListener('scroll', () => {
+            this.handleScroll();
+            this.updateTimelineProgress();
+        });
         
         // Mobile menu close on outside click
         document.addEventListener('click', (e) => this.closeMobileMenuOnOutsideClick(e));
         
         // Escape key handling
-        document.addEventListener('keydown', (e) => this.closeMobileMenuOnEscape(e));
+        document.addEventListener('keydown', (e) => {
+            this.closeMobileMenuOnEscape(e);
+            this.closeLightboxOnEscape(e);
+        });
         
         // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -67,6 +182,150 @@ class PortfolioApp {
                 }
             });
         });
+    }
+
+    // Progressive timeline fill animation
+    updateTimelineProgress() {
+        const timelineLines = document.querySelectorAll('.timeline-line');
+        
+        timelineLines.forEach((line, tabIndex) => {
+            if (!line.parentElement.parentElement.style.display || line.parentElement.parentElement.style.display !== 'none') {
+                const timeline = line.parentElement;
+                const timelineTop = timeline.offsetTop;
+                const timelineHeight = timeline.scrollHeight;
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                const windowHeight = window.innerHeight;
+                
+                const timelineProgress = Math.max(0, Math.min(1, 
+                    (scrollTop + windowHeight - timelineTop) / (timelineHeight + windowHeight)
+                ));
+                
+                line.style.height = `${timelineProgress * 100}%`;
+            }
+        });
+    }
+
+    // Lightbox functionality
+    setupLightbox() {
+        const lightbox = document.getElementById('lightbox');
+        const lightboxClose = document.querySelector('.lightbox-close');
+        const lightboxPrev = document.querySelector('.lightbox-prev');
+        const lightboxNext = document.querySelector('.lightbox-next');
+
+        // Click handlers for certificate images
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('certificate-img') || e.target.classList.contains('certificate-zoom')) {
+                const certificateImg = e.target.classList.contains('certificate-img') ? 
+                    e.target : e.target.closest('.certificate-item').querySelector('.certificate-img');
+                const grid = certificateImg.closest('.certificate-grid');
+                this.openLightbox(certificateImg, grid);
+            }
+        });
+
+        // Close lightbox
+        lightboxClose.addEventListener('click', () => this.closeLightbox());
+        document.querySelector('.lightbox-overlay').addEventListener('click', () => this.closeLightbox());
+
+        // Navigation
+        lightboxPrev.addEventListener('click', () => this.prevImage());
+        lightboxNext.addEventListener('click', () => this.nextImage());
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (lightbox.classList.contains('active')) {
+                if (e.key === 'ArrowLeft') this.prevImage();
+                if (e.key === 'ArrowRight') this.nextImage();
+            }
+        });
+    }
+
+    openLightbox(clickedImg, grid) {
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxCurrent = document.getElementById('lightbox-current');
+        const lightboxTotal = document.getElementById('lightbox-total');
+
+        // Get all images in the current grid
+        this.lightboxImages = Array.from(grid.querySelectorAll('.certificate-img'));
+        this.currentLightboxIndex = this.lightboxImages.indexOf(clickedImg);
+
+        // Update lightbox
+        lightboxImg.src = clickedImg.src;
+        lightboxImg.alt = clickedImg.alt;
+        lightboxCurrent.textContent = this.currentLightboxIndex + 1;
+        lightboxTotal.textContent = this.lightboxImages.length;
+
+        // Show lightbox with animation
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+
+        // Animate image
+        setTimeout(() => {
+            lightboxImg.style.transform = 'scale(1)';
+            lightboxImg.style.opacity = '1';
+        }, 50);
+    }
+
+    closeLightbox() {
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        
+        lightboxImg.style.transform = 'scale(0.8)';
+        lightboxImg.style.opacity = '0';
+        
+        setTimeout(() => {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }, 300);
+    }
+
+    prevImage() {
+        if (this.currentLightboxIndex > 0) {
+            this.currentLightboxIndex--;
+        } else {
+            this.currentLightboxIndex = this.lightboxImages.length - 1;
+        }
+        this.updateLightboxImage();
+    }
+
+    nextImage() {
+        if (this.currentLightboxIndex < this.lightboxImages.length - 1) {
+            this.currentLightboxIndex++;
+        } else {
+            this.currentLightboxIndex = 0;
+        }
+        this.updateLightboxImage();
+    }
+
+    updateLightboxImage() {
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxCurrent = document.getElementById('lightbox-current');
+        const currentImg = this.lightboxImages[this.currentLightboxIndex];
+
+        // Slide animation
+        lightboxImg.style.transform = 'translateX(100px)';
+        lightboxImg.style.opacity = '0';
+
+        setTimeout(() => {
+            lightboxImg.src = currentImg.src;
+            lightboxImg.alt = currentImg.alt;
+            lightboxCurrent.textContent = this.currentLightboxIndex + 1;
+            
+            lightboxImg.style.transform = 'translateX(-100px)';
+            setTimeout(() => {
+                lightboxImg.style.transform = 'translateX(0)';
+                lightboxImg.style.opacity = '1';
+            }, 50);
+        }, 150);
+    }
+
+    closeLightboxOnEscape(event) {
+        if (event.key === 'Escape') {
+            const lightbox = document.getElementById('lightbox');
+            if (lightbox.classList.contains('active')) {
+                this.closeLightbox();
+            }
+        }
     }
 
     handleScroll() {
@@ -152,6 +411,27 @@ class PortfolioApp {
         this.setupHoverAnimations();
         this.setupCardAnimations();
         this.setupTimelineAnimations();
+        this.setupSectionTransitions();
+    }
+
+    setupSectionTransitions() {
+        // Add smooth transitions between sections/tabs
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        // Observe tab contents for smooth transitions
+        document.querySelectorAll('.tab-content, .achievement-tab-content').forEach(content => {
+            content.style.opacity = '0';
+            content.style.transform = 'translateY(20px)';
+            observer.observe(content);
+        });
     }
 
     setupScrollAnimations() {
@@ -189,7 +469,6 @@ class PortfolioApp {
         const homeObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    // Check if we're actually at the top home section
                     const homeHero = document.querySelector('.home-hero');
                     if (homeHero && this.isElementInViewport(homeHero)) {
                         this.updateActiveNavLink('home');
@@ -204,7 +483,6 @@ class PortfolioApp {
         }
     }
 
-    // Helper function to check if element is in viewport
     isElementInViewport(element) {
         const rect = element.getBoundingClientRect();
         return (
@@ -230,41 +508,59 @@ class PortfolioApp {
     }
 
     setupHoverAnimations() {
-        // Skill cards hover animation
+        // Enhanced skill cards hover animation
         document.querySelectorAll('.skill-card').forEach((card, index) => {
             card.style.animationDelay = `${index * 0.1}s`;
             
             card.addEventListener('mouseenter', () => {
                 card.style.transform = 'translateY(-10px) scale(1.02)';
+                card.style.boxShadow = '0 25px 35px -5px rgba(0, 0, 0, 0.15), 0 15px 15px -5px rgba(0, 0, 0, 0.08)';
                 const icon = card.querySelector('.skill-icon');
-                if (icon) icon.style.transform = 'rotate(10deg) scale(1.1)';
+                if (icon) {
+                    icon.style.transform = 'rotate(10deg) scale(1.1)';
+                    icon.style.background = 'linear-gradient(135deg, var(--primary-color), var(--accent-color))';
+                    icon.style.color = 'white';
+                }
             });
             
             card.addEventListener('mouseleave', () => {
                 card.style.transform = 'translateY(0) scale(1)';
+                card.style.boxShadow = '';
                 const icon = card.querySelector('.skill-icon');
-                if (icon) icon.style.transform = 'rotate(0deg) scale(1)';
+                if (icon) {
+                    icon.style.transform = 'rotate(0deg) scale(1)';
+                    icon.style.background = '';
+                    icon.style.color = '';
+                }
             });
         });
 
-        // Quality cards hover animation
+        // Enhanced quality cards hover animation
         document.querySelectorAll('.quality-card').forEach((card, index) => {
             card.style.animationDelay = `${index * 0.1}s`;
             
             card.addEventListener('mouseenter', () => {
                 card.style.transform = 'translateY(-5px) scale(1.02)';
                 const icon = card.querySelector('.quality-icon');
-                if (icon) icon.style.transform = 'rotate(5deg) scale(1.1)';
+                if (icon) {
+                    icon.style.transform = 'rotate(5deg) scale(1.1)';
+                    icon.style.background = 'linear-gradient(135deg, var(--primary-color), var(--accent-color))';
+                    icon.style.color = 'white';
+                }
             });
             
             card.addEventListener('mouseleave', () => {
                 card.style.transform = 'translateY(0) scale(1)';
                 const icon = card.querySelector('.quality-icon');
-                if (icon) icon.style.transform = 'rotate(0deg) scale(1)';
+                if (icon) {
+                    icon.style.transform = 'rotate(0deg) scale(1)';
+                    icon.style.background = '';
+                    icon.style.color = '';
+                }
             });
         });
 
-        // Experience cards hover animation
+        // Enhanced experience cards hover animation
         document.querySelectorAll('.experience-card').forEach((card, index) => {
             card.style.animationDelay = `${index * 0.1}s`;
             
@@ -275,24 +571,28 @@ class PortfolioApp {
             
             card.addEventListener('mouseleave', () => {
                 card.style.transform = 'translateY(0)';
-                card.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)';
+                card.style.boxShadow = '';
             });
         });
 
-        // Certificate hover animation
+        // Enhanced certificate hover animation with zoom overlay
         document.querySelectorAll('.certificate-item').forEach((item, index) => {
             item.style.animationDelay = `${index * 0.1}s`;
             
             item.addEventListener('mouseenter', () => {
                 item.style.transform = 'translateY(-10px)';
                 const img = item.querySelector('.certificate-img');
+                const overlay = item.querySelector('.certificate-overlay');
                 if (img) img.style.transform = 'scale(1.05)';
+                if (overlay) overlay.style.opacity = '1';
             });
             
             item.addEventListener('mouseleave', () => {
                 item.style.transform = 'translateY(0)';
                 const img = item.querySelector('.certificate-img');
+                const overlay = item.querySelector('.certificate-overlay');
                 if (img) img.style.transform = 'scale(1)';
+                if (overlay) overlay.style.opacity = '0';
             });
         });
 
@@ -300,10 +600,14 @@ class PortfolioApp {
         document.querySelectorAll('.tool-item').forEach(item => {
             item.addEventListener('mouseenter', () => {
                 item.style.transform = 'translateY(-5px)';
+                const logo = item.querySelector('.tool-logo');
+                if (logo) logo.style.transform = 'scale(1.1) rotate(5deg)';
             });
             
             item.addEventListener('mouseleave', () => {
                 item.style.transform = 'translateY(0)';
+                const logo = item.querySelector('.tool-logo');
+                if (logo) logo.style.transform = 'scale(1) rotate(0deg)';
             });
         });
     }
@@ -363,8 +667,8 @@ class PortfolioApp {
             }
         };
 
-        // Start typing after delay
-        setTimeout(typeWriter, 1000);
+        // Start typing after delay (after letter animation)
+        setTimeout(typeWriter, 2000);
     }
 
     // Mobile menu functionality
@@ -423,11 +727,21 @@ class PortfolioApp {
         this.closeMobileMenu();
         
         const sections = document.querySelectorAll('.section');
-        sections.forEach(section => section.classList.remove('active'));
+        sections.forEach(section => {
+            section.classList.remove('active');
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(20px)';
+        });
         
         const targetSection = document.getElementById(sectionId);
         if (targetSection) {
             targetSection.classList.add('active');
+            // Smooth fade-in transition
+            setTimeout(() => {
+                targetSection.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                targetSection.style.opacity = '1';
+                targetSection.style.transform = 'translateY(0)';
+            }, 50);
         }
         
         history.replaceState(null, null, '#' + sectionId);
@@ -498,37 +812,48 @@ class PortfolioApp {
         }
     }
 
-    // Tab functionality for experience and achievement sections
+    // Enhanced tab functionality with smooth transitions
     showExperienceTab(tabName) {
         const tabContents = document.querySelectorAll('.tab-content');
         const tabButtons = document.querySelectorAll('.tab-btn');
         
-        tabContents.forEach(content => content.style.display = 'none');
+        // Hide all tabs with fade out
+        tabContents.forEach(content => {
+            content.style.opacity = '0';
+            content.style.transform = 'translateY(20px)';
+            setTimeout(() => {
+                content.style.display = 'none';
+            }, 300);
+        });
+        
         tabButtons.forEach(btn => btn.classList.remove('active'));
         
-        const targetTab = document.getElementById(tabName + '-tab');
-        if (targetTab) {
-            targetTab.style.display = 'block';
-            targetTab.style.opacity = '0';
-            targetTab.style.transform = 'translateY(20px)';
-            
-            // Animate in
-            setTimeout(() => {
-                targetTab.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
-                targetTab.style.opacity = '1';
-                targetTab.style.transform = 'translateY(0)';
-            }, 10);
+        // Show target tab after delay
+        setTimeout(() => {
+            const targetTab = document.getElementById(tabName + '-tab');
+            if (targetTab) {
+                targetTab.style.display = 'block';
+                targetTab.style.opacity = '0';
+                targetTab.style.transform = 'translateY(20px)';
+                
+                // Animate in
+                setTimeout(() => {
+                    targetTab.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                    targetTab.style.opacity = '1';
+                    targetTab.style.transform = 'translateY(0)';
+                }, 50);
 
-            // Trigger timeline animation
-            setTimeout(() => {
-                const timelineItems = targetTab.querySelectorAll('.timeline-item');
-                timelineItems.forEach((item, index) => {
-                    setTimeout(() => {
-                        item.classList.add('animate-timeline');
-                    }, index * 200);
-                });
-            }, 100);
-        }
+                // Trigger timeline animation with stagger
+                setTimeout(() => {
+                    const timelineItems = targetTab.querySelectorAll('.timeline-item');
+                    timelineItems.forEach((item, index) => {
+                        setTimeout(() => {
+                            item.classList.add('animate-timeline');
+                        }, index * 200);
+                    });
+                }, 200);
+            }
+        }, 300);
         
         // Update active button
         document.querySelectorAll('.tab-btn').forEach(btn => {
@@ -545,22 +870,44 @@ class PortfolioApp {
         const tabContents = document.querySelectorAll('.achievement-tab-content');
         const tabButtons = document.querySelectorAll('.achievement-tab-btn');
         
-        tabContents.forEach(content => content.style.display = 'none');
+        // Hide all tabs with fade out
+        tabContents.forEach(content => {
+            content.style.opacity = '0';
+            content.style.transform = 'translateY(20px)';
+            setTimeout(() => {
+                content.style.display = 'none';
+            }, 300);
+        });
+        
         tabButtons.forEach(btn => btn.classList.remove('active'));
         
-        const targetTab = document.getElementById(tabName + '-tab');
-        if (targetTab) {
-            targetTab.style.display = 'block';
-            targetTab.style.opacity = '0';
-            targetTab.style.transform = 'translateY(20px)';
-            
-            // Animate in
-            setTimeout(() => {
-                targetTab.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
-                targetTab.style.opacity = '1';
-                targetTab.style.transform = 'translateY(0)';
-            }, 10);
-        }
+        // Show target tab after delay
+        setTimeout(() => {
+            const targetTab = document.getElementById(tabName + '-tab');
+            if (targetTab) {
+                targetTab.style.display = 'block';
+                targetTab.style.opacity = '0';
+                targetTab.style.transform = 'translateY(20px)';
+                
+                // Animate in
+                setTimeout(() => {
+                    targetTab.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                    targetTab.style.opacity = '1';
+                    targetTab.style.transform = 'translateY(0)';
+                }, 50);
+
+                // Trigger certificate animations with stagger
+                setTimeout(() => {
+                    const certificates = targetTab.querySelectorAll('.certificate-item');
+                    certificates.forEach((cert, index) => {
+                        setTimeout(() => {
+                            cert.style.opacity = '1';
+                            cert.style.transform = 'translateY(0)';
+                        }, index * 100);
+                    });
+                }, 200);
+            }
+        }, 300);
         
         // Update active button
         document.querySelectorAll('.achievement-tab-btn').forEach(btn => {

@@ -8,10 +8,40 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Preloader -->
+    <div id="preloader" class="preloader">
+        <div class="preloader-content">
+            <div class="logo-preloader">
+                <div class="logo-icon-preloader">F</div>
+            </div>
+            <div class="loading-bar">
+                <div class="loading-fill"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lightbox Modal for Certificates -->
+    <div id="lightbox" class="lightbox">
+        <div class="lightbox-overlay"></div>
+        <div class="lightbox-content">
+            <button class="lightbox-close">&times;</button>
+            <button class="lightbox-prev">&#8249;</button>
+            <button class="lightbox-next">&#8250;</button>
+            <div class="lightbox-image-container">
+                <img id="lightbox-img" src="" alt="">
+            </div>
+            <div class="lightbox-counter">
+                <span id="lightbox-current">1</span> / <span id="lightbox-total">1</span>
+            </div>
+        </div>
+    </div>
+
     <!-- Theme Toggle Button -->
     <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
-        <span class="sun-icon">☀️</span>
-        <span class="moon-icon">🌙</span>
+        <div class="theme-icon-container">
+            <span class="sun-icon">☀️</span>
+            <span class="moon-icon">🌙</span>
+        </div>
     </button>
 
     <!-- Header with Navigation -->
@@ -52,13 +82,18 @@
         </nav>
     </header>
 
+    <!-- Timeline Progress -->
+    <div class="timeline-progress-container">
+        <div class="timeline-progress" id="timeline-progress"></div>
+    </div>
+
     <!-- Main Content -->
     <main id="main-content">
         <!-- Home Section -->
         <section id="home" class="section active">
             <div class="home-hero">
                 <div class="home-content">
-                    <h1>Hi, I'm <span class="text-accent">Fahmi</span></h1>
+                    <h1 class="letter-animate">Hi, I'm <span class="text-accent">Fahmi</span></h1>
                     <h2 class="typing-text">Driving Business Growth Through Data & Strategy</h2>
                     <p>I bridge data and business strategy to deliver actionable insights, enabling smarter decisions, stronger market positioning, and long-term business success.</p>
                     <div class="btn-group">
@@ -215,8 +250,9 @@
 
                     <div class="tab-content" id="internship-tab">
                         <div class="timeline">
+                            <div class="timeline-line" id="timeline-line"></div>
                             <div class="timeline-item">
-                                <div class="timeline-dot"></div>
+                                <div class="timeline-dot heartbeat"></div>
                                 <div class="timeline-content">
                                     <div class="experience-card">
                                         <div class="experience-header">
@@ -231,7 +267,7 @@
                                 </div>
                             </div>
                             <div class="timeline-item">
-                                <div class="timeline-dot"></div>
+                                <div class="timeline-dot heartbeat"></div>
                                 <div class="timeline-content">
                                     <div class="experience-card">
                                         <div class="experience-header">
@@ -250,8 +286,9 @@
 
                     <div class="tab-content" id="organization-tab" style="display: none;">
                         <div class="timeline">
+                            <div class="timeline-line" id="timeline-line-org"></div>
                             <div class="timeline-item">
-                                <div class="timeline-dot"></div>
+                                <div class="timeline-dot heartbeat"></div>
                                 <div class="timeline-content">
                                     <div class="experience-card">
                                         <div class="experience-header">
@@ -266,7 +303,7 @@
                                 </div>
                             </div>
                             <div class="timeline-item">
-                                <div class="timeline-dot"></div>
+                                <div class="timeline-dot heartbeat"></div>
                                 <div class="timeline-content">
                                     <div class="experience-card">
                                         <div class="experience-header">
@@ -281,7 +318,7 @@
                                 </div>
                             </div>
                             <div class="timeline-item">
-                                <div class="timeline-dot"></div>
+                                <div class="timeline-dot heartbeat"></div>
                                 <div class="timeline-content">
                                     <div class="experience-card">
                                         <div class="experience-header">
@@ -300,8 +337,9 @@
 
                     <div class="tab-content" id="work-tab" style="display: none;">
                         <div class="timeline">
+                            <div class="timeline-line" id="timeline-line-work"></div>
                             <div class="timeline-item">
-                                <div class="timeline-dot coming-soon"></div>
+                                <div class="timeline-dot heartbeat coming-soon"></div>
                                 <div class="timeline-content">
                                     <div class="experience-card coming-soon">
                                         <div class="experience-header">
@@ -334,116 +372,206 @@
                     </div>
 
                     <div class="achievement-tab-content" id="internship-cert-tab">
-                        <div class="certificate-grid">
+                        <div class="certificate-grid" data-category="internship-cert">
                             <div class="certificate-item">
                                 <img src="images/internship-1.jpg" alt="BCA Digital Internship Certificate" class="certificate-img">
+                                <div class="certificate-overlay">
+                                    <div class="certificate-zoom">🔍</div>
+                                </div>
                             </div>
                             <div class="certificate-item">
                                 <img src="images/internship-2.jpg" alt="Telkom Indonesia Internship Certificate" class="certificate-img">
+                                <div class="certificate-overlay">
+                                    <div class="certificate-zoom">🔍</div>
+                                </div>
                             </div>
                         </div>
                     </div>
 
                     <div class="achievement-tab-content" id="course-cert-tab" style="display: none;">
-                        <div class="certificate-grid">
+                        <div class="certificate-grid" data-category="course-cert">
                             <div class="certificate-item">
                                 <img src="images/course-1.jpg" alt="SQL Professional Certificate" class="certificate-img">
+                                <div class="certificate-overlay">
+                                    <div class="certificate-zoom">🔍</div>
+                                </div>
                             </div>
                             <div class="certificate-item">
                                 <img src="images/course-2.jpg" alt="Data Science Fundamentals Certificate" class="certificate-img">
+                                <div class="certificate-overlay">
+                                    <div class="certificate-zoom">🔍</div>
+                                </div>
                             </div>
                             <div class="certificate-item">
                                 <img src="images/course-3.jpg" alt="Data Science Fundamentals Certificate" class="certificate-img">
+                                <div class="certificate-overlay">
+                                    <div class="certificate-zoom">🔍</div>
+                                </div>
                             </div>
                             <div class="certificate-item">
                                 <img src="images/course-4.jpg" alt="Data Science Fundamentals Certificate" class="certificate-img">
+                                <div class="certificate-overlay">
+                                    <div class="certificate-zoom">🔍</div>
+                                </div>
                             </div>
                             <div class="certificate-item">
                                 <img src="images/course-5.jpg" alt="Data Science Fundamentals Certificate" class="certificate-img">
+                                <div class="certificate-overlay">
+                                    <div class="certificate-zoom">🔍</div>
+                                </div>
                             </div>
                             <div class="certificate-item">
                                 <img src="images/course-6.jpg" alt="Data Science Fundamentals Certificate" class="certificate-img">
+                                <div class="certificate-overlay">
+                                    <div class="certificate-zoom">🔍</div>
+                                </div>
                             </div>
                             <div class="certificate-item">
                                 <img src="images/course-7.jpg" alt="Data Science Fundamentals Certificate" class="certificate-img">
+                                <div class="certificate-overlay">
+                                    <div class="certificate-zoom">🔍</div>
+                                </div>
                             </div>
                             <div class="certificate-item">
                                 <img src="images/course-8.jpg" alt="Data Science Fundamentals Certificate" class="certificate-img">
+                                <div class="certificate-overlay">
+                                    <div class="certificate-zoom">🔍</div>
+                                </div>
                             </div>
                             <div class="certificate-item">
                                 <img src="images/course-9.jpg" alt="Data Science Fundamentals Certificate" class="certificate-img">
+                                <div class="certificate-overlay">
+                                    <div class="certificate-zoom">🔍</div>
+                                </div>
                             </div>
                             <div class="certificate-item">
                                 <img src="images/course-10.jpg" alt="Data Science Fundamentals Certificate" class="certificate-img">
+                                <div class="certificate-overlay">
+                                    <div class="certificate-zoom">🔍</div>
+                                </div>
                             </div>
                             <div class="certificate-item">
                                 <img src="images/course-11.jpg" alt="Data Science Fundamentals Certificate" class="certificate-img">
+                                <div class="certificate-overlay">
+                                    <div class="certificate-zoom">🔍</div>
+                                </div>
                             </div>
                             <div class="certificate-item">
                                 <img src="images/course-12.jpg" alt="Data Science Fundamentals Certificate" class="certificate-img">
+                                <div class="certificate-overlay">
+                                    <div class="certificate-zoom">🔍</div>
+                                </div>
                             </div>
                             <div class="certificate-item">
                                 <img src="images/course-13.png" alt="Data Science Fundamentals Certificate" class="certificate-img">
+                                <div class="certificate-overlay">
+                                    <div class="certificate-zoom">🔍</div>
+                                </div>
                             </div>
                             <div class="certificate-item">
                                 <img src="images/course-14.png" alt="Data Science Fundamentals Certificate" class="certificate-img">
+                                <div class="certificate-overlay">
+                                    <div class="certificate-zoom">🔍</div>
+                                </div>
                             </div>
                         </div>
                     </div>
 
                     <div class="achievement-tab-content" id="competition-cert-tab" style="display: none;">
-                        <div class="certificate-grid">
+                        <div class="certificate-grid" data-category="competition-cert">
                             <div class="certificate-item">
                                 <img src="images/lomba-1.jpg" alt="Data Analytics Competition Certificate" class="certificate-img">
+                                <div class="certificate-overlay">
+                                    <div class="certificate-zoom">🔍</div>
+                                </div>
                             </div>
                             <div class="certificate-item">
                                 <img src="images/lomba-2.jpg" alt="Business Case Competition Certificate" class="certificate-img">
+                                <div class="certificate-overlay">
+                                    <div class="certificate-zoom">🔍</div>
+                                </div>
                             </div>
                             <div class="certificate-item">
                                 <img src="images/lomba-3.jpg" alt="Business Case Competition Certificate" class="certificate-img">
+                                <div class="certificate-overlay">
+                                    <div class="certificate-zoom">🔍</div>
+                                </div>
                             </div>
                             <div class="certificate-item">
                                 <img src="images/lomba-4.jpg" alt="Business Case Competition Certificate" class="certificate-img">
+                                <div class="certificate-overlay">
+                                    <div class="certificate-zoom">🔍</div>
+                                </div>
                             </div>
                         </div>
                     </div>
 
                     <div class="achievement-tab-content" id="organization-cert-tab" style="display: none;">
-                        <div class="certificate-grid">
+                        <div class="certificate-grid" data-category="organization-cert">
                             <div class="certificate-item">
                                 <img src="images/organisasi-1.jpg" alt="Project Manager Certificate" class="certificate-img">
+                                <div class="certificate-overlay">
+                                    <div class="certificate-zoom">🔍</div>
+                                </div>
                             </div>
                             <div class="certificate-item">
                                 <img src="images/organisasi-2.jpg" alt="Team Lead Certificate" class="certificate-img">
+                                <div class="certificate-overlay">
+                                    <div class="certificate-zoom">🔍</div>
+                                </div>
                             </div>
                             <div class="certificate-item">
                                 <img src="images/organisasi-3.jpg" alt="Team Lead Certificate" class="certificate-img">
+                                <div class="certificate-overlay">
+                                    <div class="certificate-zoom">🔍</div>
+                                </div>
                             </div>
                             <div class="certificate-item">
                                 <img src="images/organisasi-4.jpg" alt="Team Lead Certificate" class="certificate-img">
+                                <div class="certificate-overlay">
+                                    <div class="certificate-zoom">🔍</div>
+                                </div>
                             </div>
                         </div>
                     </div>
 
                     <div class="achievement-tab-content" id="webinar-cert-tab" style="display: none;">
-                        <div class="certificate-grid">
+                        <div class="certificate-grid" data-category="webinar-cert">
                             <div class="certificate-item">
                                 <img src="images/webinar-1.jpg" alt="Digital Transformation Webinar Certificate" class="certificate-img">
+                                <div class="certificate-overlay">
+                                    <div class="certificate-zoom">🔍</div>
+                                </div>
                             </div>
                             <div class="certificate-item">
                                 <img src="images/webinar-2.jpg" alt="Machine Learning Webinar Certificate" class="certificate-img">
+                                <div class="certificate-overlay">
+                                    <div class="certificate-zoom">🔍</div>
+                                </div>
                             </div>
                             <div class="certificate-item">
                                 <img src="images/webinar-3.jpg" alt="Business Intelligence Webinar Certificate" class="certificate-img">
+                                <div class="certificate-overlay">
+                                    <div class="certificate-zoom">🔍</div>
+                                </div>
                             </div>
                             <div class="certificate-item">
                                 <img src="images/webinar-4.jpeg" alt="Cloud Computing Webinar Certificate" class="certificate-img">
+                                <div class="certificate-overlay">
+                                    <div class="certificate-zoom">🔍</div>
+                                </div>
                             </div>
                             <div class="certificate-item">
                                 <img src="images/webinar-5.jpg" alt="Data Mining Webinar Certificate" class="certificate-img">
+                                <div class="certificate-overlay">
+                                    <div class="certificate-zoom">🔍</div>
+                                </div>
                             </div>
                             <div class="certificate-item">
                                 <img src="images/webinar-6.jpg" alt="AI and Analytics Webinar Certificate" class="certificate-img">
+                                <div class="certificate-overlay">
+                                    <div class="certificate-zoom">🔍</div>
+                                </div>
                             </div>
                         </div>
                     </div>
