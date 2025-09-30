@@ -1,10 +1,10 @@
-// Enhanced Portfolio JavaScript with all new features
+// Enhanced Portfolio JavaScript with all new features including Journal section
 class PortfolioApp {
     constructor() {
         this.currentTheme = localStorage.getItem('theme') || 'light';
         this.currentLightboxIndex = 0;
         this.lightboxImages = [];
-        this.backgroundState = 0; // For smooth gradient changes
+        this.backgroundState = 0;
         this.init();
     }
 
@@ -17,6 +17,35 @@ class PortfolioApp {
         this.setupLightbox();
         this.setupScrollableTabs();
         this.setupSmoothGradientChange();
+        this.setupJournalInteraction();
+    }
+
+    // New method for journal interaction
+    setupJournalInteraction() {
+        // Add hover effects for journal items
+        document.querySelectorAll('.journal-item').forEach((item, index) => {
+            item.style.animationDelay = `${index * 0.1}s`;
+            
+            item.addEventListener('mouseenter', () => {
+                item.style.transform = 'translateY(-10px) scale(1.02)';
+                item.style.boxShadow = '0 25px 35px -5px rgba(0, 0, 0, 0.15), 0 15px 15px -5px rgba(0, 0, 0, 0.08)';
+                
+                const arrow = item.querySelector('.journal-arrow');
+                const overlay = item.querySelector('.journal-overlay');
+                if (arrow) arrow.style.transform = 'rotate(45deg) scale(1.1)';
+                if (overlay) overlay.style.opacity = '1';
+            });
+            
+            item.addEventListener('mouseleave', () => {
+                item.style.transform = 'translateY(0) scale(1)';
+                item.style.boxShadow = '';
+                
+                const arrow = item.querySelector('.journal-arrow');
+                const overlay = item.querySelector('.journal-overlay');
+                if (arrow) arrow.style.transform = 'rotate(0deg) scale(1)';
+                if (overlay) overlay.style.opacity = '0';
+            });
+        });
     }
 
     // Preloader Animation
@@ -338,7 +367,7 @@ class PortfolioApp {
             this.updateActiveNavLink('home');
         } else {
             // Check which section is currently in view
-            const sections = ['aboutme', 'skills', 'experience', 'achievement', 'contact'];
+            const sections = ['aboutme', 'skills', 'experience', 'achievement', 'journal', 'contact'];
             const navbarHeight = document.querySelector('.navbar').offsetHeight;
             
             for (let i = sections.length - 1; i >= 0; i--) {
@@ -447,7 +476,7 @@ class PortfolioApp {
                     
                     // Update active nav link
                     const sectionId = entry.target.id;
-                    if (sectionId && ['aboutme', 'skills', 'experience', 'achievement', 'contact'].includes(sectionId)) {
+                    if (sectionId && ['aboutme', 'skills', 'experience', 'achievement', 'journal', 'contact'].includes(sectionId)) {
                         this.updateActiveNavLink(sectionId);
                     }
                 }
@@ -456,8 +485,8 @@ class PortfolioApp {
 
         // Observe all animatable elements
         const animatableElements = document.querySelectorAll(
-            '.about-section, .skills-section, .experience-section, .achievement-section, .contact-section, .why-choose-section, ' +
-            '.skill-card, .certificate-item, .quality-card, .tool-item, .timeline-item'
+            '.about-section, .skills-section, .experience-section, .achievement-section, .journal-section, .contact-section, .why-choose-section, ' +
+            '.skill-card, .certificate-item, .quality-card, .tool-item, .timeline-item, .journal-item'
         );
         
         animatableElements.forEach(el => {
@@ -635,7 +664,7 @@ class PortfolioApp {
         }, observerOptions);
 
         // Apply staggered animation to grids
-        document.querySelectorAll('.skills-grid, .qualities-grid, .certificate-grid, .tools-grid').forEach(grid => {
+        document.querySelectorAll('.skills-grid, .qualities-grid, .certificate-grid, .tools-grid, .journal-grid').forEach(grid => {
             Array.from(grid.children).forEach(child => {
                 child.style.opacity = '0';
                 child.style.transform = 'translateY(20px)';
@@ -804,7 +833,7 @@ class PortfolioApp {
         if (hash) {
             if (hash === 'home') {
                 this.showSection('home');
-            } else if (['aboutme', 'skills', 'experience', 'achievement', 'contact'].includes(hash)) {
+            } else if (['aboutme', 'skills', 'experience', 'achievement', 'journal', 'contact'].includes(hash)) {
                 this.smoothScrollTo(hash);
             }
         } else {
@@ -923,6 +952,11 @@ class PortfolioApp {
     }
 }
 
+// Global function for opening journal links
+function openJournalLink(url) {
+    window.open(url, '_blank', 'noopener,noreferrer');
+}
+
 // Global functions for inline event handlers
 function toggleTheme() {
     portfolioApp.toggleTheme();
@@ -950,6 +984,10 @@ function scrollToExperience() {
 
 function scrollToAchievement() {
     portfolioApp.smoothScrollTo('achievement');
+}
+
+function scrollToJournal() {
+    portfolioApp.smoothScrollTo('journal');
 }
 
 function scrollToContact() {
