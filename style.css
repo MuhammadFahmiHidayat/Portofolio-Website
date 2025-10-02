@@ -697,8 +697,6 @@ body {
 .profile-img {
     width: clamp(280px, 40vw, 450px);
     height: clamp(280px, 40vw, 450px);
-    border-radius: 50%;
-    object-fit: cover;
     filter: grayscale(10%) brightness(1.1);
     transition: var(--transition);
 }
