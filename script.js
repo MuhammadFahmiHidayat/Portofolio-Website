@@ -342,10 +342,13 @@ class PortfolioApp {
         for (let i = 0; i < text.length; i++) {
             const char = text[i];
             if (char === '<') {
-                inTag = true; tagBuffer = char;
+                inTag = true;
+                tagBuffer = char;
             } else if (char === '>' && inTag) {
-                inTag = false; tagBuffer += char;
-                letters.push(tagBuffer); tagBuffer = '';
+                inTag = false;
+                tagBuffer += char;
+                letters.push(tagBuffer);
+                tagBuffer = '';
             } else if (inTag) {
                 tagBuffer += char;
             } else if (char === ' ') {
@@ -510,7 +513,7 @@ class PortfolioApp {
             return;
         }
 
-        const sections   = ['aboutme','skills','experience','achievement','journal','contact'];
+        const sections   = ['aboutme','skills','experience','projects','achievement','journal','contact'];
         const navbarH    = document.querySelector('.navbar')?.offsetHeight || 70;
 
         for (let i = sections.length - 1; i >= 0; i--) {
@@ -681,8 +684,8 @@ class PortfolioApp {
 
         document.querySelectorAll(
             '.about-section, .skills-section, .experience-section, .achievement-section,' +
-            '.journal-section, .contact-section, .why-choose-section,' +
-            '.skill-card, .certificate-item, .quality-card, .tool-item, .timeline-item, .journal-item'
+            '.journal-section, .contact-section, .why-choose-section, .projects-section, .achievements-highlights-section,' +
+            '.skill-card, .certificate-item, .quality-card, .tool-item, .timeline-item, .journal-item, .project-card, .achievement-highlight'
         ).forEach(el => {
             el.classList.add('animate-element');
             observer.observe(el);
@@ -696,6 +699,54 @@ class PortfolioApp {
         }, { threshold: 0.3 });
         const hero = document.querySelector('.home-hero');
         if (hero) homeObserver.observe(hero);
+
+        // Achievement counter animation
+        const achievementObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    this.animateAchievementStats();
+                    achievementObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.3 });
+
+        const achievementSection = document.querySelector('.achievements-highlights-section');
+        if (achievementSection) achievementObserver.observe(achievementSection);
+    }
+
+    animateAchievementStats() {
+        const statEls = document.querySelectorAll('.achievement-stat strong');
+        let hasAnimated = false;
+
+        statEls.forEach((el, index) => {
+            if (hasAnimated) return;
+
+            const text = el.textContent.trim();
+            const numMatch = text.match(/\d+(\.\d+)?/);
+
+            if (numMatch) {
+                const target = parseFloat(numMatch[0]);
+                const duration = 1200;
+                const start = performance.now();
+
+                const tick = (now) => {
+                    const elapsed = now - start;
+                    const progress = Math.min(elapsed / duration, 1);
+                    const eased = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+                    const current = Math.floor(eased * target);
+                    el.textContent = current + (text.includes('.') && progress < 1 ? '.' : '');
+
+                    if (progress < 1) {
+                        requestAnimationFrame(tick);
+                    } else {
+                        el.textContent = target;
+                    }
+                };
+
+                setTimeout(() => requestAnimationFrame(tick), index * 100);
+                hasAnimated = true;
+            }
+        });
     }
 
     setupTimelineAnimations() {
@@ -760,7 +811,7 @@ class PortfolioApp {
             });
         }, opts);
 
-        document.querySelectorAll('.skills-grid, .qualities-grid, .certificate-grid, .journal-grid').forEach(grid => {
+        document.querySelectorAll('.skills-grid, .qualities-grid, .certificate-grid, .journal-grid, .projects-grid, .achievements-grid').forEach(grid => {
             Array.from(grid.children).forEach(child => {
                 child.style.opacity    = '0';
                 child.style.transform  = 'translateY(22px)';
@@ -925,7 +976,7 @@ class PortfolioApp {
         const hash = window.location.hash.substring(1);
         if (!hash || hash === 'home') {
             this.showSection('home');
-        } else if (['aboutme','skills','experience','achievement','journal','contact'].includes(hash)) {
+        } else if (['aboutme','skills','experience','projects','achievement','journal','contact'].includes(hash)) {
             this.smoothScrollTo(hash);
         }
     }
@@ -1036,6 +1087,7 @@ function scrollToSkills()      { portfolioApp.smoothScrollTo('skills'); }
 function scrollToExperience()  { portfolioApp.smoothScrollTo('experience'); }
 function scrollToAchievement() { portfolioApp.smoothScrollTo('achievement'); }
 function scrollToJournal()     { portfolioApp.smoothScrollTo('journal'); }
+function scrollToProjects()    { portfolioApp.smoothScrollTo('projects'); }
 function scrollToContact()     { portfolioApp.smoothScrollTo('contact'); }
 function showExperienceTab(n)  { portfolioApp.showExperienceTab(n); }
 function showAchievementTab(n) { portfolioApp.showAchievementTab(n); }
