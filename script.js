@@ -86,8 +86,8 @@ class PortfolioApp {
         const PARTICLE_COUNT = 55;
         this.particles = [];
 
-        const primaryColor  = this.currentTheme === 'dark' ? '212,160,23'  : '212,160,23';
-        const violetColor   = this.currentTheme === 'dark' ? '30,58,138'   : '30,58,138';
+        const primaryColor  = this.currentTheme === 'dark' ? '59,130,246'  : '59,130,246';
+        const violetColor   = this.currentTheme === 'dark' ? '99,102,241'  : '99,102,241';
 
         for (let i = 0; i < PARTICLE_COUNT; i++) {
             this.particles.push({

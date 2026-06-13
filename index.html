@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Preloader -->
@@ -186,7 +186,7 @@
             <!-- About Me Section -->
             <div class="about-section" id="aboutme">
                 <div class="container">
-                    <h3 class="section-title">About Me</h3>
+                    <h3 class="section-title" data-label="About Me">About Me</h3>
                     <div class="about-content-wrapper">
                         <div class="about-image">
                             <img src="images/about-me.png" alt="About Fahmi" class="about-img">
@@ -223,7 +223,7 @@
             <!-- Skills Section -->
             <div class="skills-section" id="skills">
                 <div class="container">
-                    <h3 class="section-title">My Skills</h3>
+                    <h3 class="section-title" data-label="Skills">My Skills</h3>
                     <h2 class="section-subtitle">My Expertise</h2>
                     
                     <div class="skills-grid">
@@ -345,10 +345,18 @@
                 <!-- Skills Proficiency Matrix -->
                 <div class="skills-matrix-wrapper">
                     <h3 class="subsection-title">Proficiency Matrix</h3>
+
+                    <!-- Legend -->
+                    <div class="matrix-legend">
+                        <div class="legend-item"><span class="legend-dot advanced"></span>Advanced</div>
+                        <div class="legend-item"><span class="legend-dot intermediate"></span>Intermediate</div>
+                        <div class="legend-item"><span class="legend-dot beginner"></span>Beginner</div>
+                    </div>
+
                     <div class="skills-matrix">
-                        <!-- Row 1: Advanced Skills -->
+                        <!-- Advanced -->
                         <div class="matrix-category">
-                            <h4>Advanced Proficiency</h4>
+                            <div class="matrix-category-label">Advanced Proficiency</div>
                             <div class="matrix-row">
                                 <div class="matrix-item advanced">
                                     <span class="skill-name">SQL</span>
@@ -362,12 +370,20 @@
                                     <span class="skill-name">Excel</span>
                                     <span class="skill-level">Advanced</span>
                                 </div>
+                                <div class="matrix-item advanced">
+                                    <span class="skill-name">Data Visualization</span>
+                                    <span class="skill-level">Advanced</span>
+                                </div>
+                                <div class="matrix-item advanced">
+                                    <span class="skill-name">Market Research</span>
+                                    <span class="skill-level">Advanced</span>
+                                </div>
                             </div>
                         </div>
 
-                        <!-- Row 2: Intermediate Skills -->
+                        <!-- Intermediate -->
                         <div class="matrix-category">
-                            <h4>Intermediate Proficiency</h4>
+                            <div class="matrix-category-label">Intermediate Proficiency</div>
                             <div class="matrix-row">
                                 <div class="matrix-item intermediate">
                                     <span class="skill-name">Python</span>
@@ -377,6 +393,29 @@
                                     <span class="skill-name">Power BI</span>
                                     <span class="skill-level">Intermediate</span>
                                 </div>
+                                <div class="matrix-item intermediate">
+                                    <span class="skill-name">Project Management</span>
+                                    <span class="skill-level">Intermediate</span>
+                                </div>
+                                <div class="matrix-item intermediate">
+                                    <span class="skill-name">Business Analysis</span>
+                                    <span class="skill-level">Intermediate</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Beginner -->
+                        <div class="matrix-category">
+                            <div class="matrix-category-label">Beginner / Learning</div>
+                            <div class="matrix-row">
+                                <div class="matrix-item beginner">
+                                    <span class="skill-name">Machine Learning</span>
+                                    <span class="skill-level">Beginner</span>
+                                </div>
+                                <div class="matrix-item beginner">
+                                    <span class="skill-name">Google Looker</span>
+                                    <span class="skill-level">Beginner</span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -384,7 +423,7 @@
             </div>
             <div class="experience-section" id="experience">
                 <div class="container">
-                    <h3 class="section-title">Experience</h3>
+                    <h3 class="section-title" data-label="Experience">Experience</h3>
                     
                     <div class="experience-tabs">
                         <button class="tab-btn active" onclick="showExperienceTab('internship')" type="button">Internship</button>
@@ -520,7 +559,7 @@
             <!-- Projects Showcase Section -->
             <div class="projects-section" id="projects">
                 <div class="container">
-                    <h3 class="section-title">Featured Projects</h3>
+                    <h3 class="section-title" data-label="Projects">Featured Projects</h3>
                     <h2 class="section-subtitle">Data Analytics & Market Intelligence</h2>
 
                     <div class="projects-grid">
@@ -654,7 +693,7 @@
             <!-- Achievement Section -->
             <div class="achievement-section" id="achievement">
                 <div class="container">
-                    <h3 class="section-title">Achievement</h3>
+                    <h3 class="section-title" data-label="Achievements">Achievement</h3>
                     
                     <div class="achievement-tabs">
                         <button class="achievement-tab-btn active" onclick="showAchievementTab('internship-cert')" type="button">Internship</button>
@@ -892,7 +931,7 @@
             <!-- Journal Section -->
             <div class="journal-section" id="journal">
                 <div class="container">
-                    <h3 class="section-title">Academic Publications</h3>
+                    <h3 class="section-title" data-label="Publications">Academic Publications</h3>
                     <h2 class="section-subtitle">Research Contributions</h2>
                     
                     <div class="journal-grid">
@@ -959,7 +998,7 @@
             <!-- Achievements Highlights Section -->
             <div class="achievements-highlights-section">
                 <div class="container">
-                    <h3 class="section-title">Key Achievements</h3>
+                    <h3 class="section-title" data-label="Key Achievements">Key Achievements</h3>
 
                     <div class="achievements-grid">
                         <!-- Achievement Card 1 -->
@@ -1028,7 +1067,7 @@
             <!-- Why Choose Me Section -->
             <div class="why-choose-section">
                 <div class="container">
-                    <h3 class="section-title">Why Choose Me</h3>
+                    <h3 class="section-title" data-label="Why Me">Why Choose Me</h3>
                     
                     <div class="qualities-grid">
                         <div class="quality-card">
@@ -1094,7 +1133,7 @@
             <!-- Contact Section -->
             <div class="contact-section" id="contact">
                 <div class="container">
-                    <h3 class="section-title">Get In Touch</h3>
+                    <h3 class="section-title" data-label="Contact">Get In Touch</h3>
                     <div class="contact-wrapper">
                         <p>I'm always interested in new opportunities and exciting projects. Let's discuss how we can work together to drive business growth through data-driven insights.</p>
                         <div class="contact-info">
