@@ -72,11 +72,11 @@ class PortfolioApp {
         if (!canvas) return;
 
         const ctx = canvas.getContext('2d');
-        const hero  = document.querySelector('.home-hero');
+        const hero = document.querySelector('.home-hero');
         if (!hero) return;
 
         const resizeCanvas = () => {
-            canvas.width  = hero.offsetWidth;
+            canvas.width = hero.offsetWidth;
             canvas.height = hero.offsetHeight;
         };
         resizeCanvas();
@@ -87,15 +87,15 @@ class PortfolioApp {
         this.particles = [];
 
         const primaryColor = '37,99,235';
-        const violetColor  = '99,102,241';
+        const violetColor = '99,102,241';
 
         for (let i = 0; i < PARTICLE_COUNT; i++) {
             this.particles.push({
-                x:     Math.random() * canvas.width,
-                y:     Math.random() * canvas.height,
-                r:     Math.random() * 1.6 + 0.4,
-                dx:    (Math.random() - 0.5) * 0.28,
-                dy:    (Math.random() - 0.5) * 0.28,
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                r: Math.random() * 1.6 + 0.4,
+                dx: (Math.random() - 0.5) * 0.28,
+                dy: (Math.random() - 0.5) * 0.28,
                 alpha: Math.random() * 0.28 + 0.04,
                 color: Math.random() > 0.6 ? primaryColor : violetColor,
             });
@@ -126,9 +126,9 @@ class PortfolioApp {
                 p.dy *= 0.995;
 
                 // Wrap around edges
-                if (p.x < 0)             p.x = canvas.width;
-                if (p.x > canvas.width)  p.x = 0;
-                if (p.y < 0)             p.y = canvas.height;
+                if (p.x < 0) p.x = canvas.width;
+                if (p.x > canvas.width) p.x = 0;
+                if (p.y < 0) p.y = canvas.height;
                 if (p.y > canvas.height) p.y = 0;
 
                 // Draw particle
@@ -141,8 +141,8 @@ class PortfolioApp {
             // Draw connecting lines between nearby particles — very subtle
             for (let i = 0; i < this.particles.length; i++) {
                 for (let j = i + 1; j < this.particles.length; j++) {
-                    const dx   = this.particles[i].x - this.particles[j].x;
-                    const dy   = this.particles[i].y - this.particles[j].y;
+                    const dx = this.particles[i].x - this.particles[j].x;
+                    const dy = this.particles[i].y - this.particles[j].y;
                     const dist = Math.sqrt(dx * dx + dy * dy);
                     if (dist < 95) {
                         const opacity = (1 - dist / 95) * 0.07;
@@ -171,13 +171,13 @@ class PortfolioApp {
 
         const statEls = document.querySelectorAll('.stat-number');
         statEls.forEach(el => {
-            const target   = parseFloat(el.getAttribute('data-target') || '0');
+            const target = parseFloat(el.getAttribute('data-target') || '0');
             const decimals = parseInt(el.getAttribute('data-decimals') || '0');
             const duration = 1800;
-            const start    = performance.now();
+            const start = performance.now();
 
             const tick = (now) => {
-                const elapsed  = now - start;
+                const elapsed = now - start;
                 const progress = Math.min(elapsed / duration, 1);
                 // easeOutExpo
                 const eased = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
@@ -219,10 +219,10 @@ class PortfolioApp {
             if (!hero) return;
 
             const rect = hero.getBoundingClientRect();
-            const cx   = rect.left + rect.width / 2;
-            const cy   = rect.top  + rect.height / 2;
-            const dx   = (e.clientX - cx) / rect.width;
-            const dy   = (e.clientY - cy) / rect.height;
+            const cx = rect.left + rect.width / 2;
+            const cy = rect.top + rect.height / 2;
+            const dx = (e.clientX - cx) / rect.width;
+            const dy = (e.clientY - cy) / rect.height;
 
             const moveX = dx * 8;
             const moveY = dy * 6;
@@ -272,7 +272,7 @@ class PortfolioApp {
         animateOutline();
 
         const hoverSelectors = 'a, button, .btn, .tab-btn, .achievement-tab-btn, .certificate-item, .journal-item, .theme-toggle, .fixed-logo a, .social-links a, .social-icons a';
-        
+
         document.addEventListener('mouseover', (e) => {
             if (e.target.closest(hoverSelectors)) {
                 document.body.classList.add('cursor-hover');
@@ -361,12 +361,12 @@ class PortfolioApp {
 
         el.innerHTML = letters.join('');
 
-            el.querySelectorAll('.letter').forEach((span, i) => {
+        el.querySelectorAll('.letter').forEach((span, i) => {
             if (span.innerHTML !== '&nbsp;') {
                 setTimeout(() => {
                     span.style.transition = 'opacity 0.30s ease, transform 0.30s ease';
-                    span.style.opacity    = '1';
-                    span.style.transform  = 'translateY(0)';
+                    span.style.opacity = '1';
+                    span.style.transform = 'translateY(0)';
                 }, i * 42);
             }
         });
@@ -400,11 +400,11 @@ class PortfolioApp {
     // ─────────────────────────────────────────
     setupSmoothGradientChange() {
         window.addEventListener('scroll', () => {
-            const pct  = Math.min(window.scrollY / (document.body.scrollHeight - window.innerHeight), 1);
-            const hue  = 20 + pct * 240;
+            const pct = Math.min(window.scrollY / (document.body.scrollHeight - window.innerHeight), 1);
+            const hue = 20 + pct * 240;
             const opacity = 0.03 + pct * 0.06;
             document.documentElement.style.setProperty('--dynamic-bg',
-                `linear-gradient(135deg, var(--bg) 0%, var(--bg) ${50 + pct*30}%, hsla(${hue},70%,60%,${opacity}) 100%)`
+                `linear-gradient(135deg, var(--bg) 0%, var(--bg) ${50 + pct * 30}%, hsla(${hue},70%,60%,${opacity}) 100%)`
             );
         });
     }
@@ -420,18 +420,18 @@ class PortfolioApp {
     updateThemeIcon() {
         const container = document.querySelector('.theme-icon-container');
         if (!container) return;
-        const sun  = container.querySelector('.sun-icon');
+        const sun = container.querySelector('.sun-icon');
         const moon = container.querySelector('.moon-icon');
 
         container.style.transition = 'transform 0.5s cubic-bezier(0.68,-0.55,0.265,1.55)';
-        container.style.transform  = 'rotate(360deg)';
+        container.style.transform = 'rotate(360deg)';
 
         setTimeout(() => {
             if (this.currentTheme === 'dark') {
-                if (sun)  sun.style.display  = 'block';
+                if (sun) sun.style.display = 'block';
                 if (moon) moon.style.display = 'none';
             } else {
-                if (sun)  sun.style.display  = 'none';
+                if (sun) sun.style.display = 'none';
                 if (moon) moon.style.display = 'block';
             }
             container.style.transform = 'rotate(0deg)';
@@ -450,15 +450,15 @@ class PortfolioApp {
     // ─────────────────────────────────────────
     setupEventListeners() {
         window.addEventListener('hashchange', () => this.handleHashChange());
-        window.addEventListener('load',       () => this.handleHashChange());
-        window.addEventListener('resize',     () => this.handleWindowResize());
+        window.addEventListener('load', () => this.handleHashChange());
+        window.addEventListener('resize', () => this.handleWindowResize());
 
         window.addEventListener('scroll', () => {
             this.handleScroll();
             this.updateScrollProgress();
         });
 
-        document.addEventListener('click',   (e) => this.closeMobileMenuOnOutsideClick(e));
+        document.addEventListener('click', (e) => this.closeMobileMenuOnOutsideClick(e));
         document.addEventListener('keydown', (e) => {
             this.closeMobileMenuOnEscape(e);
             this.closeLightboxOnEscape(e);
@@ -480,9 +480,9 @@ class PortfolioApp {
     //  SCROLL PROGRESS BAR
     // ─────────────────────────────────────────
     updateScrollProgress() {
-        const bar     = document.querySelector('.timeline-progress');
+        const bar = document.querySelector('.timeline-progress');
         const scrolled = window.scrollY;
-        const total    = document.body.scrollHeight - window.innerHeight;
+        const total = document.body.scrollHeight - window.innerHeight;
         if (bar && total > 0) bar.style.width = (scrolled / total * 100) + '%';
     }
 
@@ -492,11 +492,11 @@ class PortfolioApp {
             const parent = line.parentElement?.parentElement;
             if (!parent?.style?.display || parent.style.display !== 'none') {
                 const timeline = line.parentElement;
-                const top    = timeline.offsetTop;
+                const top = timeline.offsetTop;
                 const height = timeline.scrollHeight;
                 const scroll = window.pageYOffset;
-                const wh     = window.innerHeight;
-                const pct    = Math.max(0, Math.min(1, (scroll + wh - top) / (height + wh)));
+                const wh = window.innerHeight;
+                const pct = Math.max(0, Math.min(1, (scroll + wh - top) / (height + wh)));
                 line.style.height = `${pct * 100}%`;
             }
         });
@@ -514,8 +514,8 @@ class PortfolioApp {
             return;
         }
 
-        const sections   = ['aboutme','skills','experience','projects','achievement','journal','contact'];
-        const navbarH    = document.querySelector('.navbar')?.offsetHeight || 70;
+        const sections = ['aboutme', 'skills', 'experience', 'projects', 'achievement', 'journal', 'contact'];
+        const navbarH = document.querySelector('.navbar')?.offsetHeight || 70;
 
         for (let i = sections.length - 1; i >= 0; i--) {
             const sec = document.getElementById(sections[i]);
@@ -530,48 +530,48 @@ class PortfolioApp {
     //  LIGHTBOX
     // ─────────────────────────────────────────
     setupLightbox() {
-        const lightbox     = document.getElementById('lightbox');
-        const closeBtn     = document.querySelector('.lightbox-close');
-        const prevBtn      = document.querySelector('.lightbox-prev');
-        const nextBtn      = document.querySelector('.lightbox-next');
-        const overlay      = document.querySelector('.lightbox-overlay');
+        const lightbox = document.getElementById('lightbox');
+        const closeBtn = document.querySelector('.lightbox-close');
+        const prevBtn = document.querySelector('.lightbox-prev');
+        const nextBtn = document.querySelector('.lightbox-next');
+        const overlay = document.querySelector('.lightbox-overlay');
 
         document.addEventListener('click', (e) => {
-            const img  = e.target.classList.contains('certificate-img')  ? e.target : null;
+            const img = e.target.classList.contains('certificate-img') ? e.target : null;
             const zoom = e.target.classList.contains('certificate-zoom') ? e.target : null;
 
             if (img || zoom) {
                 const certImg = img || zoom.closest('.certificate-item').querySelector('.certificate-img');
-                const grid    = certImg.closest('.certificate-grid');
+                const grid = certImg.closest('.certificate-grid');
                 this.openLightbox(certImg, grid);
             }
         });
 
-        if (closeBtn)  closeBtn.addEventListener('click', () => this.closeLightbox());
-        if (overlay)   overlay.addEventListener('click',  () => this.closeLightbox());
-        if (prevBtn)   prevBtn.addEventListener('click',  () => this.prevImage());
-        if (nextBtn)   nextBtn.addEventListener('click',  () => this.nextImage());
+        if (closeBtn) closeBtn.addEventListener('click', () => this.closeLightbox());
+        if (overlay) overlay.addEventListener('click', () => this.closeLightbox());
+        if (prevBtn) prevBtn.addEventListener('click', () => this.prevImage());
+        if (nextBtn) nextBtn.addEventListener('click', () => this.nextImage());
 
         document.addEventListener('keydown', (e) => {
             if (lightbox?.classList.contains('active')) {
-                if (e.key === 'ArrowLeft')  this.prevImage();
+                if (e.key === 'ArrowLeft') this.prevImage();
                 if (e.key === 'ArrowRight') this.nextImage();
             }
         });
     }
 
     openLightbox(clickedImg, grid) {
-        const lightbox  = document.getElementById('lightbox');
-        const lbImg     = document.getElementById('lightbox-img');
+        const lightbox = document.getElementById('lightbox');
+        const lbImg = document.getElementById('lightbox-img');
         const lbCurrent = document.getElementById('lightbox-current');
-        const lbTotal   = document.getElementById('lightbox-total');
+        const lbTotal = document.getElementById('lightbox-total');
 
-        this.lightboxImages       = Array.from(grid.querySelectorAll('.certificate-img'));
+        this.lightboxImages = Array.from(grid.querySelectorAll('.certificate-img'));
         this.currentLightboxIndex = this.lightboxImages.indexOf(clickedImg);
 
-        if (lbImg)     { lbImg.src = clickedImg.src; lbImg.alt = clickedImg.alt; }
-        if (lbCurrent)   lbCurrent.textContent = this.currentLightboxIndex + 1;
-        if (lbTotal)     lbTotal.textContent   = this.lightboxImages.length;
+        if (lbImg) { lbImg.src = clickedImg.src; lbImg.alt = clickedImg.alt; }
+        if (lbCurrent) lbCurrent.textContent = this.currentLightboxIndex + 1;
+        if (lbTotal) lbTotal.textContent = this.lightboxImages.length;
 
         lightbox?.classList.add('active');
         document.body.style.overflow = 'hidden';
@@ -583,7 +583,7 @@ class PortfolioApp {
 
     closeLightbox() {
         const lightbox = document.getElementById('lightbox');
-        const lbImg    = document.getElementById('lightbox-img');
+        const lbImg = document.getElementById('lightbox-img');
         if (lbImg) { lbImg.style.transform = 'scale(0.85)'; lbImg.style.opacity = '0'; }
         setTimeout(() => {
             lightbox?.classList.remove('active');
@@ -606,13 +606,13 @@ class PortfolioApp {
     }
 
     updateLightboxImage() {
-        const lbImg     = document.getElementById('lightbox-img');
+        const lbImg = document.getElementById('lightbox-img');
         const lbCurrent = document.getElementById('lightbox-current');
-        const current   = this.lightboxImages[this.currentLightboxIndex];
+        const current = this.lightboxImages[this.currentLightboxIndex];
 
         if (lbImg) {
             lbImg.style.transform = 'translateX(60px)';
-            lbImg.style.opacity   = '0';
+            lbImg.style.opacity = '0';
             setTimeout(() => {
                 lbImg.src = current.src;
                 lbImg.alt = current.alt;
@@ -620,8 +620,8 @@ class PortfolioApp {
                 lbImg.style.transform = 'translateX(-60px)';
                 setTimeout(() => {
                     lbImg.style.transition = 'transform 0.3s ease, opacity 0.3s ease';
-                    lbImg.style.transform  = 'translateX(0)';
-                    lbImg.style.opacity    = '1';
+                    lbImg.style.transform = 'translateX(0)';
+                    lbImg.style.opacity = '1';
                 }, 30);
             }, 160);
         }
@@ -648,14 +648,14 @@ class PortfolioApp {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-                    entry.target.style.opacity    = '1';
-                    entry.target.style.transform  = 'translateY(0)';
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
                 }
             });
         }, { threshold: 0.1 });
 
         document.querySelectorAll('.tab-content, .achievement-tab-content').forEach(el => {
-            el.style.opacity   = '0';
+            el.style.opacity = '0';
             el.style.transform = 'translateY(20px)';
             observer.observe(el);
         });
@@ -676,7 +676,7 @@ class PortfolioApp {
                     }
 
                     const id = entry.target.id;
-                    if (id && ['aboutme','skills','experience','achievement','journal','contact'].includes(id)) {
+                    if (id && ['aboutme', 'skills', 'experience', 'achievement', 'journal', 'contact'].includes(id)) {
                         this.updateActiveNavLink(id);
                     }
                 }
@@ -781,16 +781,16 @@ class PortfolioApp {
             item.addEventListener('mouseenter', () => {
                 item.style.transform = 'translateY(-10px)';
                 const overlay = item.querySelector('.certificate-overlay');
-                const img     = item.querySelector('.certificate-img');
+                const img = item.querySelector('.certificate-img');
                 if (overlay) overlay.style.opacity = '1';
-                if (img)     img.style.transform   = 'scale(1.06)';
+                if (img) img.style.transform = 'scale(1.06)';
             });
             item.addEventListener('mouseleave', () => {
                 item.style.transform = 'translateY(0)';
                 const overlay = item.querySelector('.certificate-overlay');
-                const img     = item.querySelector('.certificate-img');
+                const img = item.querySelector('.certificate-img');
                 if (overlay) overlay.style.opacity = '0';
-                if (img)     img.style.transform   = 'scale(1)';
+                if (img) img.style.transform = 'scale(1)';
             });
         });
     }
@@ -803,7 +803,7 @@ class PortfolioApp {
                 if (entry.isIntersecting) {
                     Array.from(entry.target.children).forEach((child, i) => {
                         setTimeout(() => {
-                            child.style.opacity   = '1';
+                            child.style.opacity = '1';
                             child.style.transform = 'translateY(0)';
                         }, i * 70);
                     });
@@ -814,8 +814,8 @@ class PortfolioApp {
 
         document.querySelectorAll('.skills-grid, .qualities-grid, .certificate-grid, .journal-grid, .projects-grid, .achievements-grid').forEach(grid => {
             Array.from(grid.children).forEach(child => {
-                child.style.opacity    = '0';
-                child.style.transform  = 'translateY(18px)';
+                child.style.opacity = '0';
+                child.style.transform = 'translateY(18px)';
                 child.style.transition = 'opacity 0.55s ease, transform 0.55s ease';
             });
             stagger.observe(grid);
@@ -830,17 +830,17 @@ class PortfolioApp {
             item.style.animationDelay = `${i * 0.08}s`;
             item.addEventListener('mouseenter', () => {
                 item.style.transform = 'translateY(-4px)';
-                const arrow   = item.querySelector('.journal-arrow');
+                const arrow = item.querySelector('.journal-arrow');
                 const overlay = item.querySelector('.journal-overlay');
-                if (arrow)   arrow.style.transform  = 'rotate(35deg) scale(1.05)';
-                if (overlay) overlay.style.opacity  = '1';
+                if (arrow) arrow.style.transform = 'rotate(35deg) scale(1.05)';
+                if (overlay) overlay.style.opacity = '1';
             });
             item.addEventListener('mouseleave', () => {
                 item.style.transform = 'translateY(0)';
-                const arrow   = item.querySelector('.journal-arrow');
+                const arrow = item.querySelector('.journal-arrow');
                 const overlay = item.querySelector('.journal-overlay');
-                if (arrow)   arrow.style.transform  = 'rotate(0deg) scale(1)';
-                if (overlay) overlay.style.opacity  = '0';
+                if (arrow) arrow.style.transform = 'rotate(0deg) scale(1)';
+                if (overlay) overlay.style.opacity = '0';
             });
         });
     }
@@ -859,8 +859,8 @@ class PortfolioApp {
             tabs.style.cursor = 'grabbing';
         });
         tabs.addEventListener('mouseleave', () => { isDown = false; tabs.style.cursor = 'grab'; });
-        tabs.addEventListener('mouseup',    () => { isDown = false; tabs.style.cursor = 'grab'; });
-        tabs.addEventListener('mousemove',  e => {
+        tabs.addEventListener('mouseup', () => { isDown = false; tabs.style.cursor = 'grab'; });
+        tabs.addEventListener('mousemove', e => {
             if (!isDown) return;
             e.preventDefault();
             tabs.scrollLeft = scrollLeft - (e.pageX - tabs.offsetLeft - startX) * 2;
@@ -868,7 +868,7 @@ class PortfolioApp {
 
         // Touch support
         tabs.addEventListener('touchstart', e => { startX = e.touches[0].pageX; scrollLeft = tabs.scrollLeft; });
-        tabs.addEventListener('touchmove',  e => {
+        tabs.addEventListener('touchmove', e => {
             tabs.scrollLeft = scrollLeft - (e.touches[0].pageX - startX) * 2;
         });
         tabs.addEventListener('touchend', () => { startX = 0; });
@@ -878,17 +878,17 @@ class PortfolioApp {
     //  MOBILE MENU
     // ─────────────────────────────────────────
     toggleMobileMenu() {
-        const menu    = document.getElementById('navMenu');
-        const btn     = document.querySelector('.mobile-menu-btn');
-        const isOpen  = menu.classList.contains('active');
+        const menu = document.getElementById('navMenu');
+        const btn = document.querySelector('.mobile-menu-btn');
+        const isOpen = menu.classList.contains('active');
         menu.classList.toggle('active', !isOpen);
-        btn.classList.toggle('active',  !isOpen);
+        btn.classList.toggle('active', !isOpen);
         document.body.style.overflow = isOpen ? 'auto' : 'hidden';
     }
 
     closeMobileMenu() {
         const menu = document.getElementById('navMenu');
-        const btn  = document.querySelector('.mobile-menu-btn');
+        const btn = document.querySelector('.mobile-menu-btn');
         menu?.classList.remove('active');
         btn?.classList.remove('active');
         document.body.style.overflow = 'auto';
@@ -896,7 +896,7 @@ class PortfolioApp {
 
     closeMobileMenuOnOutsideClick(e) {
         const navbar = document.querySelector('.navbar');
-        const menu   = document.getElementById('navMenu');
+        const menu = document.getElementById('navMenu');
         if (navbar && menu && !navbar.contains(e.target) && menu.classList.contains('active')) {
             this.closeMobileMenu();
         }
@@ -918,7 +918,7 @@ class PortfolioApp {
 
         document.querySelectorAll('.section').forEach(s => {
             s.classList.remove('active');
-            s.style.opacity   = '0';
+            s.style.opacity = '0';
             s.style.transform = 'translateY(20px)';
         });
 
@@ -927,8 +927,8 @@ class PortfolioApp {
             target.classList.add('active');
             setTimeout(() => {
                 target.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-                target.style.opacity    = '1';
-                target.style.transform  = 'translateY(0)';
+                target.style.opacity = '1';
+                target.style.transform = 'translateY(0)';
             }, 50);
         }
 
@@ -955,7 +955,7 @@ class PortfolioApp {
     }
 
     scrollToSection(sectionId) {
-        const target  = document.getElementById(sectionId);
+        const target = document.getElementById(sectionId);
         const navbarH = document.querySelector('.navbar')?.offsetHeight || 70;
         if (target) {
             window.scrollTo({ top: target.offsetTop - navbarH - 20, behavior: 'smooth' });
@@ -977,7 +977,7 @@ class PortfolioApp {
         const hash = window.location.hash.substring(1);
         if (!hash || hash === 'home') {
             this.showSection('home');
-        } else if (['aboutme','skills','experience','projects','achievement','journal','contact'].includes(hash)) {
+        } else if (['aboutme', 'skills', 'experience', 'projects', 'achievement', 'journal', 'contact'].includes(hash)) {
             this.smoothScrollTo(hash);
         }
     }
@@ -987,10 +987,10 @@ class PortfolioApp {
     // ─────────────────────────────────────────
     showExperienceTab(tabName) {
         const contents = document.querySelectorAll('.tab-content');
-        const buttons  = document.querySelectorAll('.tab-btn');
+        const buttons = document.querySelectorAll('.tab-btn');
 
         contents.forEach(c => {
-            c.style.opacity   = '0';
+            c.style.opacity = '0';
             c.style.transform = 'translateY(20px)';
             setTimeout(() => { c.style.display = 'none'; }, 300);
         });
@@ -999,13 +999,13 @@ class PortfolioApp {
         setTimeout(() => {
             const target = document.getElementById(tabName + '-tab');
             if (target) {
-                target.style.display   = 'block';
-                target.style.opacity   = '0';
+                target.style.display = 'block';
+                target.style.opacity = '0';
                 target.style.transform = 'translateY(20px)';
                 setTimeout(() => {
                     target.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-                    target.style.opacity    = '1';
-                    target.style.transform  = 'translateY(0)';
+                    target.style.opacity = '1';
+                    target.style.transform = 'translateY(0)';
                 }, 50);
 
                 setTimeout(() => {
@@ -1018,9 +1018,9 @@ class PortfolioApp {
 
         buttons.forEach(btn => {
             if (btn.textContent.toLowerCase().includes(tabName) ||
-                (tabName === 'internship'   && btn.textContent.includes('Internship'))  ||
-                (tabName === 'organization' && btn.textContent.includes('Organization'))||
-                (tabName === 'work'         && btn.textContent.includes('Work'))) {
+                (tabName === 'internship' && btn.textContent.includes('Internship')) ||
+                (tabName === 'organization' && btn.textContent.includes('Organization')) ||
+                (tabName === 'work' && btn.textContent.includes('Work'))) {
                 btn.classList.add('active');
             }
         });
@@ -1031,10 +1031,10 @@ class PortfolioApp {
     // ─────────────────────────────────────────
     showAchievementTab(tabName) {
         const contents = document.querySelectorAll('.achievement-tab-content');
-        const buttons  = document.querySelectorAll('.achievement-tab-btn');
+        const buttons = document.querySelectorAll('.achievement-tab-btn');
 
         contents.forEach(c => {
-            c.style.opacity   = '0';
+            c.style.opacity = '0';
             c.style.transform = 'translateY(20px)';
             setTimeout(() => { c.style.display = 'none'; }, 300);
         });
@@ -1043,19 +1043,19 @@ class PortfolioApp {
         setTimeout(() => {
             const target = document.getElementById(tabName + '-tab');
             if (target) {
-                target.style.display   = 'block';
-                target.style.opacity   = '0';
+                target.style.display = 'block';
+                target.style.opacity = '0';
                 target.style.transform = 'translateY(20px)';
                 setTimeout(() => {
                     target.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-                    target.style.opacity    = '1';
-                    target.style.transform  = 'translateY(0)';
+                    target.style.opacity = '1';
+                    target.style.transform = 'translateY(0)';
                 }, 50);
 
                 setTimeout(() => {
                     target.querySelectorAll('.certificate-item').forEach((cert, i) => {
                         setTimeout(() => {
-                            cert.style.opacity   = '1';
+                            cert.style.opacity = '1';
                             cert.style.transform = 'translateY(0)';
                         }, i * 80);
                     });
@@ -1065,11 +1065,11 @@ class PortfolioApp {
 
         buttons.forEach(btn => {
             const t = btn.textContent.toLowerCase();
-            if ((tabName.includes('internship')   && t.includes('internship'))  ||
-                (tabName.includes('course')       && t.includes('course'))       ||
-                (tabName.includes('competition')  && t.includes('competition'))  ||
+            if ((tabName.includes('internship') && t.includes('internship')) ||
+                (tabName.includes('course') && t.includes('course')) ||
+                (tabName.includes('competition') && t.includes('competition')) ||
                 (tabName.includes('organization') && t.includes('organization')) ||
-                (tabName.includes('webinar')      && t.includes('webinar'))) {
+                (tabName.includes('webinar') && t.includes('webinar'))) {
                 btn.classList.add('active');
             }
         });
@@ -1080,17 +1080,17 @@ class PortfolioApp {
 //  GLOBAL FUNCTION WRAPPERS
 // ─────────────────────────────────────────
 function openJournalLink(url) { window.open(url, '_blank', 'noopener,noreferrer'); }
-function toggleTheme()         { portfolioApp.toggleTheme(); }
-function toggleMobileMenu()    { portfolioApp.toggleMobileMenu(); }
-function showSection(id)       { portfolioApp.showSection(id); }
-function scrollToAboutMe()     { portfolioApp.smoothScrollTo('aboutme'); }
-function scrollToSkills()      { portfolioApp.smoothScrollTo('skills'); }
-function scrollToExperience()  { portfolioApp.smoothScrollTo('experience'); }
+function toggleTheme() { portfolioApp.toggleTheme(); }
+function toggleMobileMenu() { portfolioApp.toggleMobileMenu(); }
+function showSection(id) { portfolioApp.showSection(id); }
+function scrollToAboutMe() { portfolioApp.smoothScrollTo('aboutme'); }
+function scrollToSkills() { portfolioApp.smoothScrollTo('skills'); }
+function scrollToExperience() { portfolioApp.smoothScrollTo('experience'); }
 function scrollToAchievement() { portfolioApp.smoothScrollTo('achievement'); }
-function scrollToJournal()     { portfolioApp.smoothScrollTo('journal'); }
-function scrollToProjects()    { portfolioApp.smoothScrollTo('projects'); }
-function scrollToContact()     { portfolioApp.smoothScrollTo('contact'); }
-function showExperienceTab(n)  { portfolioApp.showExperienceTab(n); }
+function scrollToJournal() { portfolioApp.smoothScrollTo('journal'); }
+function scrollToProjects() { portfolioApp.smoothScrollTo('projects'); }
+function scrollToContact() { portfolioApp.smoothScrollTo('contact'); }
+function showExperienceTab(n) { portfolioApp.showExperienceTab(n); }
 function showAchievementTab(n) { portfolioApp.showAchievementTab(n); }
 
 // ─────────────────────────────────────────
