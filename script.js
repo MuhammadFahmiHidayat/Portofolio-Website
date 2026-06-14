@@ -82,22 +82,22 @@ class PortfolioApp {
         resizeCanvas();
         window.addEventListener('resize', resizeCanvas);
 
-        // Spawn particles
-        const PARTICLE_COUNT = 55;
+        // Spawn particles — minimal & elegant
+        const PARTICLE_COUNT = 40;
         this.particles = [];
 
-        const primaryColor  = this.currentTheme === 'dark' ? '59,130,246'  : '59,130,246';
-        const violetColor   = this.currentTheme === 'dark' ? '99,102,241'  : '99,102,241';
+        const primaryColor = '37,99,235';
+        const violetColor  = '99,102,241';
 
         for (let i = 0; i < PARTICLE_COUNT; i++) {
             this.particles.push({
                 x:     Math.random() * canvas.width,
                 y:     Math.random() * canvas.height,
-                r:     Math.random() * 2.2 + 0.6,
-                dx:    (Math.random() - 0.5) * 0.5,
-                dy:    (Math.random() - 0.5) * 0.5,
-                alpha: Math.random() * 0.45 + 0.08,
-                color: Math.random() > 0.5 ? primaryColor : violetColor,
+                r:     Math.random() * 1.6 + 0.4,
+                dx:    (Math.random() - 0.5) * 0.28,
+                dy:    (Math.random() - 0.5) * 0.28,
+                alpha: Math.random() * 0.28 + 0.04,
+                color: Math.random() > 0.6 ? primaryColor : violetColor,
             });
         }
 
@@ -109,13 +109,13 @@ class PortfolioApp {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
             this.particles.forEach(p => {
-                // Gentle mouse attraction
+                // Very gentle mouse attraction
                 const mx = this.mouse.x - p.x;
                 const my = this.mouse.y - p.y;
                 const dist = Math.sqrt(mx * mx + my * my);
-                if (dist < 120) {
-                    p.dx += mx * 0.00006;
-                    p.dy += my * 0.00006;
+                if (dist < 90) {
+                    p.dx += mx * 0.000035;
+                    p.dy += my * 0.000035;
                 }
 
                 p.x += p.dx;
@@ -138,19 +138,19 @@ class PortfolioApp {
                 ctx.fill();
             });
 
-            // Draw connecting lines between nearby particles
+            // Draw connecting lines between nearby particles — very subtle
             for (let i = 0; i < this.particles.length; i++) {
                 for (let j = i + 1; j < this.particles.length; j++) {
                     const dx   = this.particles[i].x - this.particles[j].x;
                     const dy   = this.particles[i].y - this.particles[j].y;
                     const dist = Math.sqrt(dx * dx + dy * dy);
-                    if (dist < 110) {
-                        const opacity = (1 - dist / 110) * 0.12;
+                    if (dist < 95) {
+                        const opacity = (1 - dist / 95) * 0.07;
                         ctx.beginPath();
                         ctx.moveTo(this.particles[i].x, this.particles[i].y);
                         ctx.lineTo(this.particles[j].x, this.particles[j].y);
                         ctx.strokeStyle = `rgba(${this.particles[i].color},${opacity})`;
-                        ctx.lineWidth = 0.8;
+                        ctx.lineWidth = 0.6;
                         ctx.stroke();
                     }
                 }
@@ -224,8 +224,8 @@ class PortfolioApp {
             const dx   = (e.clientX - cx) / rect.width;
             const dy   = (e.clientY - cy) / rect.height;
 
-            const moveX = dx * 14;
-            const moveY = dy * 10;
+            const moveX = dx * 8;
+            const moveY = dy * 6;
 
             profileImg.style.transform = `translate(${moveX}px, ${moveY}px)`;
         });
@@ -304,14 +304,15 @@ class PortfolioApp {
                     const relativeX = (x - centerX) / centerX;
                     const relativeY = (y - centerY) / centerY;
 
-                    const maxRotateX = 8; // max degrees X
-                    const maxRotateY = 8; // max degrees Y
+                    // Subtle tilt — professional feel
+                    const maxRotateX = 4;
+                    const maxRotateY = 4;
 
                     const rotateX = -relativeY * maxRotateX;
                     const rotateY = relativeX * maxRotateY;
 
-                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
-                    card.style.transition = 'transform 0.1s ease';
+                    card.style.transform = `perspective(1200px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.01, 1.01, 1.01)`;
+                    card.style.transition = 'transform 0.12s ease';
                 }
             });
 
@@ -360,13 +361,13 @@ class PortfolioApp {
 
         el.innerHTML = letters.join('');
 
-        el.querySelectorAll('.letter').forEach((span, i) => {
+            el.querySelectorAll('.letter').forEach((span, i) => {
             if (span.innerHTML !== '&nbsp;') {
                 setTimeout(() => {
-                    span.style.transition = 'opacity 0.35s ease, transform 0.35s ease';
+                    span.style.transition = 'opacity 0.30s ease, transform 0.30s ease';
                     span.style.opacity    = '1';
                     span.style.transform  = 'translateY(0)';
-                }, i * 48);
+                }, i * 42);
             }
         });
     }
@@ -795,7 +796,7 @@ class PortfolioApp {
     }
 
     setupCardAnimations() {
-        const opts = { threshold: 0.1, rootMargin: '0px 0px -20px 0px' };
+        const opts = { threshold: 0.08, rootMargin: '0px 0px -20px 0px' };
 
         const stagger = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -804,7 +805,7 @@ class PortfolioApp {
                         setTimeout(() => {
                             child.style.opacity   = '1';
                             child.style.transform = 'translateY(0)';
-                        }, i * 90);
+                        }, i * 70);
                     });
                     stagger.unobserve(entry.target);
                 }
@@ -814,8 +815,8 @@ class PortfolioApp {
         document.querySelectorAll('.skills-grid, .qualities-grid, .certificate-grid, .journal-grid, .projects-grid, .achievements-grid').forEach(grid => {
             Array.from(grid.children).forEach(child => {
                 child.style.opacity    = '0';
-                child.style.transform  = 'translateY(22px)';
-                child.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                child.style.transform  = 'translateY(18px)';
+                child.style.transition = 'opacity 0.55s ease, transform 0.55s ease';
             });
             stagger.observe(grid);
         });
@@ -826,16 +827,16 @@ class PortfolioApp {
     // ─────────────────────────────────────────
     setupJournalInteraction() {
         document.querySelectorAll('.journal-item').forEach((item, i) => {
-            item.style.animationDelay = `${i * 0.1}s`;
+            item.style.animationDelay = `${i * 0.08}s`;
             item.addEventListener('mouseenter', () => {
-                item.style.transform = 'translateY(-10px) scale(1.02)';
+                item.style.transform = 'translateY(-4px)';
                 const arrow   = item.querySelector('.journal-arrow');
                 const overlay = item.querySelector('.journal-overlay');
-                if (arrow)   arrow.style.transform  = 'rotate(45deg) scale(1.1)';
+                if (arrow)   arrow.style.transform  = 'rotate(35deg) scale(1.05)';
                 if (overlay) overlay.style.opacity  = '1';
             });
             item.addEventListener('mouseleave', () => {
-                item.style.transform = 'translateY(0) scale(1)';
+                item.style.transform = 'translateY(0)';
                 const arrow   = item.querySelector('.journal-arrow');
                 const overlay = item.querySelector('.journal-overlay');
                 if (arrow)   arrow.style.transform  = 'rotate(0deg) scale(1)';
