@@ -544,7 +544,23 @@ class PortfolioApp {
                 const certImg = img || zoom.closest('.certificate-item').querySelector('.certificate-img');
                 const grid = certImg.closest('.certificate-grid');
                 this.openLightbox(certImg, grid);
+                return;
             }
+
+            const showcase = e.target.closest('.showcase-item');
+            if (showcase) {
+                this.openLightbox(showcase.querySelector('.showcase-img'), showcase.closest('.showcase-grid'));
+            }
+        });
+
+        // Work gallery tabs
+        document.querySelectorAll('.showcase-tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.showcase-tab-btn').forEach(b => b.classList.toggle('active', b === btn));
+                document.querySelectorAll('.showcase-panel').forEach(p => {
+                    p.classList.toggle('active', p.id === btn.dataset.target);
+                });
+            });
         });
 
         if (closeBtn) closeBtn.addEventListener('click', () => this.closeLightbox());
@@ -566,10 +582,11 @@ class PortfolioApp {
         const lbCurrent = document.getElementById('lightbox-current');
         const lbTotal = document.getElementById('lightbox-total');
 
-        this.lightboxImages = Array.from(grid.querySelectorAll('.certificate-img'));
+        this.lightboxImages = Array.from(grid.querySelectorAll('.certificate-img, .showcase-img'));
         this.currentLightboxIndex = this.lightboxImages.indexOf(clickedImg);
 
-        if (lbImg) { lbImg.src = clickedImg.src; lbImg.alt = clickedImg.alt; }
+        if (lbImg) { lbImg.src = clickedImg.dataset.full || clickedImg.src; lbImg.alt = clickedImg.alt; }
+        this.setLightboxCaption(clickedImg);
         if (lbCurrent) lbCurrent.textContent = this.currentLightboxIndex + 1;
         if (lbTotal) lbTotal.textContent = this.lightboxImages.length;
 
@@ -614,8 +631,9 @@ class PortfolioApp {
             lbImg.style.transform = 'translateX(60px)';
             lbImg.style.opacity = '0';
             setTimeout(() => {
-                lbImg.src = current.src;
+                lbImg.src = current.dataset.full || current.src;
                 lbImg.alt = current.alt;
+                this.setLightboxCaption(current);
                 if (lbCurrent) lbCurrent.textContent = this.currentLightboxIndex + 1;
                 lbImg.style.transform = 'translateX(-60px)';
                 setTimeout(() => {
@@ -625,6 +643,11 @@ class PortfolioApp {
                 }, 30);
             }, 160);
         }
+    }
+
+    setLightboxCaption(img) {
+        const cap = document.getElementById('lightbox-caption');
+        if (cap) cap.textContent = img.dataset.caption || '';
     }
 
     closeLightboxOnEscape(e) {

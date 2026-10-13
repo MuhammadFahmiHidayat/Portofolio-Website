@@ -4,16 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Fahmi - Professional Data Analytics & Business Strategy Portfolio">
+    <meta name="description" content="Muhammad Fahmi Hidayat - Customer Care Performance &amp; Analytics at Telkomsel. Data analytics, process automation, and customer experience portfolio.">
     <meta name="author" content="Muhammad Fahmi Hidayat">
     <meta name="keywords"
         content="Data Analytics, Business Strategy, Portfolio, Fahmi, Information Systems, Telkom University, SQL, Python, Tableau, bluClass, bluAmbassador, IndiHome, Agree, IT">
-    <meta property="og:title" content="Fahmi - Driving Business Growth Through Data & Strategy">
+    <meta property="og:title" content="Muhammad Fahmi Hidayat — Data &amp; Customer Analytics">
     <meta property="og:description"
-        content="Information Systems graduate with dual expertise in business analysis and data analytics. Explore my portfolio, projects, achievements, and publications.">
+        content="Customer Care Performance &amp; Analytics at Telkomsel. Data analytics, Python automation, dashboards, and customer experience insight.">
     <meta property="og:type" content="website">
     <meta property="og:image" content="images/fahmi.png">
-    <title>Fahmi - Driving Business Growth Through Data & Strategy</title>
+    <title>Muhammad Fahmi Hidayat — Data &amp; Customer Analytics</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -45,6 +45,7 @@
             <div class="lightbox-image-container">
                 <img id="lightbox-img" src="" alt="">
             </div>
+            <p class="lightbox-caption" id="lightbox-caption"></p>
             <div class="lightbox-counter">
                 <span id="lightbox-current">1</span> / <span id="lightbox-total">1</span>
             </div>
@@ -88,6 +89,9 @@
                         data-section="experience">Experience</a>
                 </li>
                 <li class="nav-item">
+                    <a href="#projects" class="nav-link" onclick="scrollToProjects()" data-section="projects">Projects</a>
+                </li>
+                <li class="nav-item">
                     <a href="#achievement" class="nav-link" onclick="scrollToAchievement()"
                         data-section="achievement">Achievement</a>
                 </li>
@@ -122,12 +126,12 @@
                     <!-- Open To Work Badge -->
                     <div class="open-to-work-badge">
                         <span class="otw-dot"></span>
-                        Open to Work
+                        Now at Telkomsel · Customer Care Analytics
                     </div>
                     <h1 class="letter-animate">Hi, I'm <span class="text-accent">Fahmi</span></h1>
-                    <h2 class="typing-text">Driving Business Growth Through Data &amp; Strategy</h2>
-                    <p>I bridge data and business strategy to deliver actionable insights, enabling smarter decisions,
-                        stronger market positioning, and long-term business success.</p>
+                    <h2 class="typing-text">Turning Customer Data into Better Experiences</h2>
+                    <p>I turn customer, product, and channel data into automated reports, dashboards, and insights that
+                        shift customers to digital self-service and help teams decide faster.</p>
                     <div class="btn-group">
                         <a href="https://wa.me/+6281381175860" class="btn btn-primary">
                             <span class="btn-text">Contact Me</span>
@@ -173,6 +177,13 @@
                         </div>
                         <div class="stat-item">
                             <div class="stat-number-wrapper">
+                                <span class="stat-number" data-target="97">0</span>
+                                <span class="stat-suffix">%</span>
+                            </div>
+                            <span class="stat-label">Faster Reporting</span>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number-wrapper">
                                 <span class="stat-number" data-target="2">0</span>
                             </div>
                             <span class="stat-label">Publications</span>
@@ -206,12 +217,18 @@
                             <img src="images/about-me.png" alt="About Fahmi" class="about-img">
                         </div>
                         <div class="about-text">
-                            <p>Cum Laude graduate of Information Systems (GPA 3.68/4.00) with strong expertise in data
-                                analytics and business strategy. Proficient in SQL, Python, Power BI, Tableau, and Excel
-                                with hands-on experience in large-scale data processing, data visualization, competitor
-                                benchmarking, and market research. Passionate about turning complex data into actionable
-                                business insights to drive growth, product decisions, and market expansion
-                                opportunities.</p>
+                            <p>Information Systems graduate (Cum Laude, GPA 3.68/4.00) currently working in Customer Care
+                                Performance and Analytics at Telkomsel, with experience in data analytics, process
+                                automation, and customer experience.</p>
+                            <p>Proficient in SQL, Python, Power BI, Tableau, and Excel, with hands-on experience
+                                automating reporting workflows, building dashboards, and analyzing tNPS and customer
+                                interaction data. Passionate about turning complex data into actionable insights that
+                                improve customer experience and drive business decisions.</p>
+                            <div class="about-facts">
+                                <div class="about-fact"><strong>3</strong><span>Roles at Telkomsel</span></div>
+                                <div class="about-fact"><strong>466</strong><span>GraPARI outlets covered</span></div>
+                                <div class="about-fact"><strong>503</strong><span>Cities benchmarked</span></div>
+                            </div>
                         </div>
                     </div>
 
@@ -465,14 +482,69 @@
                     <h3 class="section-title" data-label="Experience">Experience</h3>
 
                     <div class="experience-tabs">
-                        <button class="tab-btn active" onclick="showExperienceTab('internship')"
+                        <button class="tab-btn active" onclick="showExperienceTab('work')" type="button">Work</button>
+                        <button class="tab-btn" onclick="showExperienceTab('internship')"
                             type="button">Internship</button>
                         <button class="tab-btn" onclick="showExperienceTab('organization')"
                             type="button">Organization</button>
-                        <button class="tab-btn" onclick="showExperienceTab('work')" type="button">Work</button>
                     </div>
 
-                    <div class="tab-content" id="internship-tab">
+                    <div class="tab-content" id="work-tab">
+                        <div class="timeline">
+                            <div class="timeline-line" id="timeline-line-work"></div>
+                            <div class="timeline-item">
+                                <div class="timeline-dot heartbeat"></div>
+                                <div class="timeline-content">
+                                    <div class="experience-card">
+                                        <div class="experience-header">
+                                            <span class="exp-badge exp-badge-live">Contract · Current</span>
+                                            <h3>Customer Care Performance and Analytics</h3>
+                                            <p class="company"><strong>Telkomsel</strong> · Jakarta</p>
+                                            <time>October 2026 - Present</time>
+                                        </div>
+                                        <div class="experience-body">
+                                            <ul>
+                                                <li>Analyzed KIP (Complaint, Information, Request) interaction data to drive the shifting of customer service transactions toward digital self-service channels.</li>
+                                                <li>Delivered weekly and monthly performance reports on ticket, order, and interaction data to help management monitor customer care trends.</li>
+                                            </ul>
+                                        </div>
+                                        <div class="exp-metrics">
+                                            <span class="exp-metric"><strong>KIP</strong><small>Shifting Analysis</small></span>
+                                            <span class="exp-metric"><strong>Weekly</strong><small>&amp; Monthly Reports</small></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-dot heartbeat"></div>
+                                <div class="timeline-content">
+                                    <div class="experience-card">
+                                        <div class="experience-header">
+                                            <span class="exp-badge">Contract</span>
+                                            <h3>Self Service Operation and Engagement</h3>
+                                            <p class="company"><strong>Telkomsel</strong> · Jakarta</p>
+                                            <time>June 2026 - October 2026</time>
+                                        </div>
+                                        <div class="experience-body">
+                                            <ul>
+                                                <li>Automated 3 manual reporting workflows using Python, replacing Excel macros and Power Automate, resulting in 97% faster processing from 6 hours to 5–10 minutes.</li>
+                                                <li>Designed a Figma UI/UX prototype for a trouble ticket dashboard covering 466 GraPARI outlets and 4 vendors, proposed to the IT team to improve vendor accountability.</li>
+                                                <li>Built a dashboard to standardize transaction data from 4 GraPARI Express vendors into one 23-column format, eliminating manual data reformatting.</li>
+                                                <li>Wrote SQL queries in Huawei Cloud DataArts Studio to extract KIP Shifting and GraPARI Online payment data, enabling on-demand data delivery for stakeholders.</li>
+                                            </ul>
+                                        </div>
+                                        <div class="exp-metrics">
+                                            <span class="exp-metric"><strong>97%</strong><small>Faster Reporting</small></span>
+                                            <span class="exp-metric"><strong>466</strong><small>GraPARI Outlets</small></span>
+                                            <span class="exp-metric"><strong>23</strong><small>Std. Columns</small></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-content" id="internship-tab" style="display: none;">
                         <div class="timeline">
                             <div class="timeline-line" id="timeline-line"></div>
                             <div class="timeline-item">
@@ -480,20 +552,23 @@
                                 <div class="timeline-content">
                                     <div class="experience-card">
                                         <div class="experience-header">
-                                            <h3>Product Acquisition Marketing, Intern</h3>
-                                            <p class="company"><strong>Telkomsel</strong></p>
+                                            <span class="exp-badge">Internship</span>
+                                            <h3>Product Acquisition Marketing</h3>
+                                            <p class="company"><strong>Telkomsel</strong> · Jakarta</p>
                                             <time>November 2025 - May 2026</time>
                                         </div>
                                         <div class="experience-body">
-                                            <p>Automated competitor benchmarking by scraping 8 ISP competitors across
-                                                503 cities using Python resulting in 98% reduction in manual process and
-                                                cutting analysis cycle from 14 days to 1 day. Built 5 end-to-end data
-                                                visualizations using Tableau, Power BI, and Excel enabling stakeholders
-                                                to accelerate product performance reviews and data-driven decisions.
-                                                Developed a 3-tier city clustering framework using K-Means and GMM for
-                                                IndiHome product revamp and more targeted market segmentation.
-                                                Maintained 6 Product Knowledge and 6 Product Catalog Matrix monthly to
-                                                ensure pricing consistency for 100,000+ Salesforce across Indonesia.</p>
+                                            <ul>
+                                                <li>Automated competitor benchmarking by scraping 8 ISP competitors across 503 cities using Python, resulting in a 98% reduction in manual process and cutting the analysis cycle from 14 days to 1 day.</li>
+                                                <li>Built 5 end-to-end data visualizations using Tableau, Power BI, and Excel, enabling stakeholders to accelerate product performance reviews and data-driven decisions.</li>
+                                                <li>Developed a 3-tier city clustering framework using K-Means and GMM for IndiHome product revamp and more targeted market segmentation.</li>
+                                                <li>Maintained 6 Product Knowledge and 6 Product Catalog Matrix documents monthly to ensure pricing consistency for 100,000+ Salesforce across Indonesia.</li>
+                                            </ul>
+                                        </div>
+                                        <div class="exp-metrics">
+                                            <span class="exp-metric"><strong>98%</strong><small>Less Manual Work</small></span>
+                                            <span class="exp-metric"><strong>503</strong><small>Cities</small></span>
+                                            <span class="exp-metric"><strong>100K+</strong><small>Salesforce</small></span>
                                         </div>
                                     </div>
                                 </div>
@@ -503,18 +578,22 @@
                                 <div class="timeline-content">
                                     <div class="experience-card">
                                         <div class="experience-header">
-                                            <h3>Growth &amp; Acquisition, Intern</h3>
-                                            <p class="company"><strong>BCA Digital</strong></p>
+                                            <span class="exp-badge">Internship</span>
+                                            <h3>Growth &amp; Acquisition</h3>
+                                            <p class="company"><strong>BCA Digital</strong> · Jakarta</p>
                                             <time>January 2024 - February 2024</time>
                                         </div>
                                         <div class="experience-body">
-                                            <p>Organized and executed bluClass seminar attended by 200+ participants
-                                                resulting in 150+ new app sign-ups and increased financial literacy
-                                                awareness. Initiated and led bluAmbassadors program with 15 student
-                                                ambassadors resulting in stronger brand presence and growing digital
-                                                innovation community on campus. Conducted competitive event analysis and
-                                                identified collaboration opportunities with universities and corporate
-                                                partners for expanding brand visibility and strategic partnerships.</p>
+                                            <ul>
+                                                <li>Organized and executed the bluClass seminar attended by 200+ participants, resulting in 150+ new app sign-ups and increased financial literacy awareness.</li>
+                                                <li>Initiated and led the bluAmbassadors program with 15 student ambassadors, building a stronger brand presence and a growing digital innovation community on campus.</li>
+                                                <li>Conducted competitive event analysis and identified collaboration opportunities with universities and corporate partners to expand brand visibility.</li>
+                                            </ul>
+                                        </div>
+                                        <div class="exp-metrics">
+                                            <span class="exp-metric"><strong>200+</strong><small>Participants</small></span>
+                                            <span class="exp-metric"><strong>150+</strong><small>Sign-ups</small></span>
+                                            <span class="exp-metric"><strong>15</strong><small>Ambassadors</small></span>
                                         </div>
                                     </div>
                                 </div>
@@ -524,19 +603,23 @@
                                 <div class="timeline-content">
                                     <div class="experience-card">
                                         <div class="experience-header">
-                                            <h3>Go To Market, Intern</h3>
-                                            <p class="company"><strong>Telkom Indonesia</strong></p>
+                                            <span class="exp-badge">Internship</span>
+                                            <h3>Go To Market</h3>
+                                            <p class="company"><strong>Telkom Indonesia</strong> · Jakarta</p>
                                             <time>August 2023 - December 2023</time>
                                         </div>
                                         <div class="experience-body">
-                                            <p>Approached 25+ potential clients via phone, chat, and email resulting in
-                                                successful customer base expansion for the Agree platform. Designed 3
-                                                visual slide decks using Google Slides for communicating business plans
-                                                and project progress to internal stakeholders. Conducted market research
-                                                on 3 agricultural commodities identifying 65 market opportunities to
-                                                support strategic decision-making for the Agree platform. Produced 9
-                                                Minutes of Meeting documents ensuring cross-departmental alignment and
-                                                clear follow-up actions across all stakeholders.</p>
+                                            <ul>
+                                                <li>Approached 25+ potential clients via phone, chat, and email, expanding the customer base for the Agree platform.</li>
+                                                <li>Designed 3 visual slide decks using Google Slides to communicate business plans and project progress to internal stakeholders.</li>
+                                                <li>Conducted market research on 3 agricultural commodities, identifying 65 market opportunities to support strategic decisions for Agree.</li>
+                                                <li>Produced 9 Minutes of Meeting documents ensuring cross-departmental alignment and clear follow-up actions.</li>
+                                            </ul>
+                                        </div>
+                                        <div class="exp-metrics">
+                                            <span class="exp-metric"><strong>65</strong><small>Opportunities</small></span>
+                                            <span class="exp-metric"><strong>25+</strong><small>Clients</small></span>
+                                            <span class="exp-metric"><strong>9</strong><small>MoM Docs</small></span>
                                         </div>
                                     </div>
                                 </div>
@@ -552,52 +635,10 @@
                                 <div class="timeline-content">
                                     <div class="experience-card">
                                         <div class="experience-header">
-                                            <h3>Staff of Academic Reasearch and Technology</h3>
-                                            <p class="company"><strong>Information Systems Student Association</strong>
-                                            </p>
+                                            <span class="exp-badge">Organization</span>
+                                            <h3>Staff of Academic Research and Technology</h3>
+                                            <p class="company"><strong>Information Systems Student Association</strong> · Telkom University</p>
                                             <time>2022 - 2023</time>
-                                        </div>
-                                        <div class="experience-body">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                                                veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                                                commodo consequat.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="timeline-item">
-                                <div class="timeline-dot heartbeat"></div>
-                                <div class="timeline-content">
-                                    <div class="experience-card">
-                                        <div class="experience-header">
-                                            <h3>Lorem Ipsum</h3>
-                                            <p class="company"><strong>Lorem Ipsum</strong></p>
-                                            <time>2021 - 2022</time>
-                                        </div>
-                                        <div class="experience-body">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                                                veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                                                commodo consequat.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="timeline-item">
-                                <div class="timeline-dot heartbeat"></div>
-                                <div class="timeline-content">
-                                    <div class="experience-card">
-                                        <div class="experience-header">
-                                            <h3>Lorem Ipsum</h3>
-                                            <p class="company"><strong>Lorem Ipsum</strong></p>
-                                            <time>2020 - 2021</time>
-                                        </div>
-                                        <div class="experience-body">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                                                veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                                                commodo consequat.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -605,29 +646,6 @@
                         </div>
                     </div>
 
-                    <div class="tab-content" id="work-tab" style="display: none;">
-                        <div class="timeline">
-                            <div class="timeline-line" id="timeline-line-work"></div>
-                            <div class="timeline-item">
-                                <div class="timeline-dot heartbeat coming-soon"></div>
-                                <div class="timeline-content">
-                                    <div class="experience-card coming-soon">
-                                        <div class="experience-header">
-                                            <h3>Coming Soon</h3>
-                                            <p class="company"><strong>Professional Career</strong></p>
-                                            <time>2025 - Future</time>
-                                        </div>
-                                        <div class="experience-body">
-                                            <p>Currently seeking new opportunities to apply my skills in data analytics,
-                                                business analysis, and strategic planning. Ready to contribute to
-                                                innovative projects and drive business growth through data-driven
-                                                insights.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
 
@@ -635,9 +653,102 @@
             <div class="projects-section" id="projects">
                 <div class="container">
                     <h3 class="section-title" data-label="Projects">Featured Projects</h3>
-                    <h2 class="section-subtitle">Data Analytics & Market Intelligence</h2>
+                    <h2 class="section-subtitle">Automation, Analytics &amp; Market Intelligence</h2>
 
                     <div class="projects-grid">
+
+                        <div class="project-card">
+                            <div class="project-image">
+                                <div class="project-icon">⚡</div>
+                            </div>
+                            <div class="project-content">
+                                <h4>tNPS Reporting Automation</h4>
+                                <p class="project-role">Telkomsel · Self Service Operation &amp; Engagement</p>
+                                <p class="project-description">Rebuilt 3 manual reporting workflows (Excel macros &amp; Power Automate) as a Python reporting builder: upload the channel files, and the formatted tNPS and traffic report is generated in minutes.</p>
+                                <div class="project-metrics">
+                                    <span class="metric">
+                                        <strong>97%</strong>
+                                        <small>Faster</small>
+                                    </span>
+                                    <span class="metric">
+                                        <strong>6 h</strong>
+                                        <small>Before</small>
+                                    </span>
+                                    <span class="metric">
+                                        <strong>5–10 min</strong>
+                                        <small>After</small>
+                                    </span>
+                                </div>
+                                <div class="project-tags">
+                                    <span class="tag">Python</span>
+                                    <span class="tag">Automation</span>
+                                    <span class="tag">tNPS</span>
+                                    <span class="tag">Reporting</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="project-card">
+                            <div class="project-image">
+                                <div class="project-icon">🧩</div>
+                            </div>
+                            <div class="project-content">
+                                <h4>GraPARI Express Data Standardization</h4>
+                                <p class="project-role">Telkomsel · Self Service Operation &amp; Engagement</p>
+                                <p class="project-description">Web dashboard that maps transaction files from 4 GraPARI Express vendors into a single 23-column standard format, removing manual reformatting before analysis.</p>
+                                <div class="project-metrics">
+                                    <span class="metric">
+                                        <strong>4</strong>
+                                        <small>Vendors</small>
+                                    </span>
+                                    <span class="metric">
+                                        <strong>23</strong>
+                                        <small>Std. Columns</small>
+                                    </span>
+                                    <span class="metric">
+                                        <strong>0</strong>
+                                        <small>Manual Reformat</small>
+                                    </span>
+                                </div>
+                                <div class="project-tags">
+                                    <span class="tag">Dashboard</span>
+                                    <span class="tag">Data Mapping</span>
+                                    <span class="tag">Web App</span>
+                                    <span class="tag">Data Quality</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="project-card">
+                            <div class="project-image">
+                                <div class="project-icon">🎫</div>
+                            </div>
+                            <div class="project-content">
+                                <h4>Trouble Ticket Dashboard Prototype</h4>
+                                <p class="project-role">Telkomsel · UI/UX · Proposed to IT</p>
+                                <p class="project-description">Figma UI/UX prototype for monitoring GraPARI trouble tickets per outlet and vendor, proposed to the IT team to improve vendor accountability.</p>
+                                <div class="project-metrics">
+                                    <span class="metric">
+                                        <strong>466</strong>
+                                        <small>Outlets</small>
+                                    </span>
+                                    <span class="metric">
+                                        <strong>4</strong>
+                                        <small>Vendors</small>
+                                    </span>
+                                    <span class="metric">
+                                        <strong>Figma</strong>
+                                        <small>Prototype</small>
+                                    </span>
+                                </div>
+                                <div class="project-tags">
+                                    <span class="tag">Figma</span>
+                                    <span class="tag">UI/UX</span>
+                                    <span class="tag">Ticketing</span>
+                                    <span class="tag">Vendor Mgmt</span>
+                                </div>
+                            </div>
+                        </div>
 
                         <!-- Project Card 1: Competitor Benchmarking -->
                         <div class="project-card">
@@ -815,6 +926,333 @@
                             </div>
                         </div>
 
+                    </div>
+                </div>
+            </div>
+
+            <!-- Work Gallery Section -->
+            <div class="showcase-section" id="gallery">
+                <div class="container">
+                    <h3 class="section-title" data-label="Gallery">Work Gallery</h3>
+                    <h2 class="section-subtitle">Real work from my roles at Telkomsel</h2>
+                    <p class="showcase-note">🔒 Data, numbers, and internal details are blurred for confidentiality.</p>
+
+                    <div class="showcase-tabs" role="tablist">
+                        <button class="showcase-tab-btn active" type="button" data-target="ssoe-gallery">
+                            <span class="showcase-tab-title">Self Service Operation &amp; Engagement</span>
+                            <span class="showcase-tab-meta">Contract · Jun – Oct 2026</span>
+                        </button>
+                        <button class="showcase-tab-btn" type="button" data-target="pam-gallery">
+                            <span class="showcase-tab-title">Product Acquisition Marketing</span>
+                            <span class="showcase-tab-meta">Internship · Nov 2025 – May 2026</span>
+                        </button>
+                    </div>
+
+                    <div class="showcase-panel active" id="ssoe-gallery">
+                        <div class="showcase-grid">
+                            <figure class="showcase-item">
+                                <div class="showcase-thumb">
+                                    <img src="images/ssoe/ssim-dashboard-thumb.webp" data-full="images/ssoe/ssim-dashboard.webp"
+                                        alt="Self Service Interaction Dashboard" data-caption="Self Service Interaction Dashboard — Traffic and tNPS performance across all self-service channels." class="showcase-img" loading="lazy">
+                                    <span class="showcase-zoom" aria-hidden="true">⤢</span>
+                                </div>
+                                <figcaption>
+                                    <h4>Self Service Interaction Dashboard</h4>
+                                    <p>Traffic and tNPS performance across all self-service channels.</p>
+                                </figcaption>
+                            </figure>
+                            <figure class="showcase-item">
+                                <div class="showcase-thumb">
+                                    <img src="images/ssoe/ssim-channel-thumb.webp" data-full="images/ssoe/ssim-channel.webp"
+                                        alt="Channel Drill-down" data-caption="Channel Drill-down — Monthly traffic and tNPS trend per channel, with GraPARI Express machine integration." class="showcase-img" loading="lazy">
+                                    <span class="showcase-zoom" aria-hidden="true">⤢</span>
+                                </div>
+                                <figcaption>
+                                    <h4>Channel Drill-down</h4>
+                                    <p>Monthly traffic and tNPS trend per channel, with GraPARI Express machine integration.</p>
+                                </figcaption>
+                            </figure>
+                            <figure class="showcase-item">
+                                <div class="showcase-thumb">
+                                    <img src="images/ssoe/ssim-veronika-thumb.webp" data-full="images/ssoe/ssim-veronika.webp"
+                                        alt="Veronika Monitoring" data-caption="Veronika Monitoring — Daily traffic and NPS monitoring for the Veronika virtual assistant." class="showcase-img" loading="lazy">
+                                    <span class="showcase-zoom" aria-hidden="true">⤢</span>
+                                </div>
+                                <figcaption>
+                                    <h4>Veronika Monitoring</h4>
+                                    <p>Daily traffic and NPS monitoring for the Veronika virtual assistant.</p>
+                                </figcaption>
+                            </figure>
+                            <figure class="showcase-item">
+                                <div class="showcase-thumb">
+                                    <img src="images/ssoe/tnps-builder-thumb.webp" data-full="images/ssoe/tnps-builder.webp"
+                                        alt="tNPS Reporting Builder" data-caption="tNPS Reporting Builder — Python app that replaced Excel macros: upload channel files, get the report." class="showcase-img" loading="lazy">
+                                    <span class="showcase-zoom" aria-hidden="true">⤢</span>
+                                </div>
+                                <figcaption>
+                                    <h4>tNPS Reporting Builder</h4>
+                                    <p>Python app that replaced Excel macros: upload channel files, get the report.</p>
+                                </figcaption>
+                            </figure>
+                            <figure class="showcase-item">
+                                <div class="showcase-thumb">
+                                    <img src="images/ssoe/tnps-output-thumb.webp" data-full="images/ssoe/tnps-output.webp"
+                                        alt="Automated Report Output" data-caption="Automated Report Output — Charts generated automatically by the reporting builder." class="showcase-img" loading="lazy">
+                                    <span class="showcase-zoom" aria-hidden="true">⤢</span>
+                                </div>
+                                <figcaption>
+                                    <h4>Automated Report Output</h4>
+                                    <p>Charts generated automatically by the reporting builder.</p>
+                                </figcaption>
+                            </figure>
+                            <figure class="showcase-item">
+                                <div class="showcase-thumb">
+                                    <img src="images/ssoe/tnps-preview-thumb.webp" data-full="images/ssoe/tnps-preview.webp"
+                                        alt="Report Preview &amp; Export" data-caption="Report Preview &amp; Export — Review the generated tables before sending to stakeholders." class="showcase-img" loading="lazy">
+                                    <span class="showcase-zoom" aria-hidden="true">⤢</span>
+                                </div>
+                                <figcaption>
+                                    <h4>Report Preview &amp; Export</h4>
+                                    <p>Review the generated tables before sending to stakeholders.</p>
+                                </figcaption>
+                            </figure>
+                            <figure class="showcase-item">
+                                <div class="showcase-thumb">
+                                    <img src="images/ssoe/gpx-overview-thumb.webp" data-full="images/ssoe/gpx-overview.webp"
+                                        alt="GraPARI Express Standardization" data-caption="GraPARI Express Standardization — Overview of standardized transactions from 4 vendors." class="showcase-img" loading="lazy">
+                                    <span class="showcase-zoom" aria-hidden="true">⤢</span>
+                                </div>
+                                <figcaption>
+                                    <h4>GraPARI Express Standardization</h4>
+                                    <p>Overview of standardized transactions from 4 vendors.</p>
+                                </figcaption>
+                            </figure>
+                            <figure class="showcase-item">
+                                <div class="showcase-thumb">
+                                    <img src="images/ssoe/gpx-upload-thumb.webp" data-full="images/ssoe/gpx-upload.webp"
+                                        alt="Vendor File Upload" data-caption="Vendor File Upload — Drop raw vendor files; the tool detects the vendor format." class="showcase-img" loading="lazy">
+                                    <span class="showcase-zoom" aria-hidden="true">⤢</span>
+                                </div>
+                                <figcaption>
+                                    <h4>Vendor File Upload</h4>
+                                    <p>Drop raw vendor files; the tool detects the vendor format.</p>
+                                </figcaption>
+                            </figure>
+                            <figure class="showcase-item">
+                                <div class="showcase-thumb">
+                                    <img src="images/ssoe/gpx-mapping-thumb.webp" data-full="images/ssoe/gpx-mapping.webp"
+                                        alt="Column Mapping" data-caption="Column Mapping — Every vendor column mapped into the 23-column standard." class="showcase-img" loading="lazy">
+                                    <span class="showcase-zoom" aria-hidden="true">⤢</span>
+                                </div>
+                                <figcaption>
+                                    <h4>Column Mapping</h4>
+                                    <p>Every vendor column mapped into the 23-column standard.</p>
+                                </figcaption>
+                            </figure>
+                            <figure class="showcase-item">
+                                <div class="showcase-thumb">
+                                    <img src="images/ssoe/figma-ticket-thumb.webp" data-full="images/ssoe/figma-ticket.webp"
+                                        alt="Trouble Ticket Prototype (Figma)" data-caption="Trouble Ticket Prototype (Figma) — UI/UX flow for a ticket dashboard covering 466 outlets." class="showcase-img" loading="lazy">
+                                    <span class="showcase-zoom" aria-hidden="true">⤢</span>
+                                </div>
+                                <figcaption>
+                                    <h4>Trouble Ticket Prototype (Figma)</h4>
+                                    <p>UI/UX flow for a ticket dashboard covering 466 outlets.</p>
+                                </figcaption>
+                            </figure>
+                            <figure class="showcase-item">
+                                <div class="showcase-thumb">
+                                    <img src="images/ssoe/faq-report-thumb.webp" data-full="images/ssoe/faq-report.webp"
+                                        alt="Veronika FAQ Analysis" data-caption="Veronika FAQ Analysis — FAQ menu usage report for Veronika on WhatsApp." class="showcase-img" loading="lazy">
+                                    <span class="showcase-zoom" aria-hidden="true">⤢</span>
+                                </div>
+                                <figcaption>
+                                    <h4>Veronika FAQ Analysis</h4>
+                                    <p>FAQ menu usage report for Veronika on WhatsApp.</p>
+                                </figcaption>
+                            </figure>
+                        </div>
+                    </div>
+
+                    <div class="showcase-panel" id="pam-gallery">
+                        <div class="showcase-grid">
+                            <figure class="showcase-item">
+                                <div class="showcase-thumb">
+                                    <img src="images/pam/clustering-thumb.webp" data-full="images/pam/clustering.webp"
+                                        alt="City Clustering — K-Means" data-caption="City Clustering — K-Means — Economic-based segmentation into Metropolitan, Regional Growth, and Emerging &amp; Rural." class="showcase-img" loading="lazy">
+                                    <span class="showcase-zoom" aria-hidden="true">⤢</span>
+                                </div>
+                                <figcaption>
+                                    <h4>City Clustering — K-Means</h4>
+                                    <p>Economic-based segmentation into Metropolitan, Regional Growth, and Emerging &amp; Rural.</p>
+                                </figcaption>
+                            </figure>
+                            <figure class="showcase-item">
+                                <div class="showcase-thumb">
+                                    <img src="images/pam/clustering-2-thumb.webp" data-full="images/pam/clustering-2.webp"
+                                        alt="City Clustering — GMM" data-caption="City Clustering — GMM — Household consumption + CAGR features for IndiHome revamp targeting." class="showcase-img" loading="lazy">
+                                    <span class="showcase-zoom" aria-hidden="true">⤢</span>
+                                </div>
+                                <figcaption>
+                                    <h4>City Clustering — GMM</h4>
+                                    <p>Household consumption + CAGR features for IndiHome revamp targeting.</p>
+                                </figcaption>
+                            </figure>
+                            <figure class="showcase-item">
+                                <div class="showcase-thumb">
+                                    <img src="images/pam/netflix-insight-thumb.webp" data-full="images/pam/netflix-insight.webp"
+                                        alt="IndiHome Netflix Insight" data-caption="IndiHome Netflix Insight — Activation, revenue, and speed distribution by region." class="showcase-img" loading="lazy">
+                                    <span class="showcase-zoom" aria-hidden="true">⤢</span>
+                                </div>
+                                <figcaption>
+                                    <h4>IndiHome Netflix Insight</h4>
+                                    <p>Activation, revenue, and speed distribution by region.</p>
+                                </figcaption>
+                            </figure>
+                            <figure class="showcase-item">
+                                <div class="showcase-thumb">
+                                    <img src="images/pam/speed-tier-thumb.webp" data-full="images/pam/speed-tier.webp"
+                                        alt="Speed Tier Migration Insight" data-caption="Speed Tier Migration Insight — Customer shift after the 100 and 150 Mbps launch." class="showcase-img" loading="lazy">
+                                    <span class="showcase-zoom" aria-hidden="true">⤢</span>
+                                </div>
+                                <figcaption>
+                                    <h4>Speed Tier Migration Insight</h4>
+                                    <p>Customer shift after the 100 and 150 Mbps launch.</p>
+                                </figcaption>
+                            </figure>
+                            <figure class="showcase-item">
+                                <div class="showcase-thumb">
+                                    <img src="images/pam/scraper-code-thumb.webp" data-full="images/pam/scraper-code.webp"
+                                        alt="ISP Competitor Scraper" data-caption="ISP Competitor Scraper — Python, BeautifulSoup &amp; Selenium scraping 8 ISP websites." class="showcase-img" loading="lazy">
+                                    <span class="showcase-zoom" aria-hidden="true">⤢</span>
+                                </div>
+                                <figcaption>
+                                    <h4>ISP Competitor Scraper</h4>
+                                    <p>Python, BeautifulSoup &amp; Selenium scraping 8 ISP websites.</p>
+                                </figcaption>
+                            </figure>
+                            <figure class="showcase-item">
+                                <div class="showcase-thumb">
+                                    <img src="images/pam/scraper-run-thumb.webp" data-full="images/pam/scraper-run.webp"
+                                        alt="Scraping 503 Cities" data-caption="Scraping 503 Cities — Automated run across all cities, cutting 14 days to 1 day." class="showcase-img" loading="lazy">
+                                    <span class="showcase-zoom" aria-hidden="true">⤢</span>
+                                </div>
+                                <figcaption>
+                                    <h4>Scraping 503 Cities</h4>
+                                    <p>Automated run across all cities, cutting 14 days to 1 day.</p>
+                                </figcaption>
+                            </figure>
+                            <figure class="showcase-item">
+                                <div class="showcase-thumb">
+                                    <img src="images/pam/scraper-doc-thumb.webp" data-full="images/pam/scraper-doc.webp"
+                                        alt="Scraper Documentation" data-caption="Scraper Documentation — Documentation of the scraping tool." class="showcase-img" loading="lazy">
+                                    <span class="showcase-zoom" aria-hidden="true">⤢</span>
+                                </div>
+                                <figcaption>
+                                    <h4>Scraper Documentation</h4>
+                                    <p>Documentation of the scraping tool.</p>
+                                </figcaption>
+                            </figure>
+                            <figure class="showcase-item">
+                                <div class="showcase-thumb">
+                                    <img src="images/pam/pdd-update-thumb.webp" data-full="images/pam/pdd-update.webp"
+                                        alt="PDD &amp; Installation Fee Update" data-caption="PDD &amp; Installation Fee Update — Monthly product &amp; pricing update deck." class="showcase-img" loading="lazy">
+                                    <span class="showcase-zoom" aria-hidden="true">⤢</span>
+                                </div>
+                                <figcaption>
+                                    <h4>PDD &amp; Installation Fee Update</h4>
+                                    <p>Monthly product &amp; pricing update deck.</p>
+                                </figcaption>
+                            </figure>
+                            <figure class="showcase-item">
+                                <div class="showcase-thumb">
+                                    <img src="images/pam/catalog-matrix-thumb.webp" data-full="images/pam/catalog-matrix.webp"
+                                        alt="Product Catalog Matrix" data-caption="Product Catalog Matrix — Monthly catalog kept consistent for 100,000+ Salesforce." class="showcase-img" loading="lazy">
+                                    <span class="showcase-zoom" aria-hidden="true">⤢</span>
+                                </div>
+                                <figcaption>
+                                    <h4>Product Catalog Matrix</h4>
+                                    <p>Monthly catalog kept consistent for 100,000+ Salesforce.</p>
+                                </figcaption>
+                            </figure>
+                            <figure class="showcase-item">
+                                <div class="showcase-thumb">
+                                    <img src="images/pam/proposal-wifi-thumb.webp" data-full="images/pam/proposal-wifi.webp"
+                                        alt="Product Proposal Deck" data-caption="Product Proposal Deck — Proposal for a new IndiHome WiFi bundle." class="showcase-img" loading="lazy">
+                                    <span class="showcase-zoom" aria-hidden="true">⤢</span>
+                                </div>
+                                <figcaption>
+                                    <h4>Product Proposal Deck</h4>
+                                    <p>Proposal for a new IndiHome WiFi bundle.</p>
+                                </figcaption>
+                            </figure>
+                            <figure class="showcase-item">
+                                <div class="showcase-thumb">
+                                    <img src="images/pam/subscription-compare-thumb.webp" data-full="images/pam/subscription-compare.webp"
+                                        alt="Subscription Benchmark" data-caption="Subscription Benchmark — Netflix, Disney+, and Prime Video price comparison." class="showcase-img" loading="lazy">
+                                    <span class="showcase-zoom" aria-hidden="true">⤢</span>
+                                </div>
+                                <figcaption>
+                                    <h4>Subscription Benchmark</h4>
+                                    <p>Netflix, Disney+, and Prime Video price comparison.</p>
+                                </figcaption>
+                            </figure>
+                            <figure class="showcase-item">
+                                <div class="showcase-thumb">
+                                    <img src="images/pam/market-visit-thumb.webp" data-full="images/pam/market-visit.webp"
+                                        alt="Market Visit Insight" data-caption="Market Visit Insight — Field findings from an SMS agency visit in Bekasi." class="showcase-img" loading="lazy">
+                                    <span class="showcase-zoom" aria-hidden="true">⤢</span>
+                                </div>
+                                <figcaption>
+                                    <h4>Market Visit Insight</h4>
+                                    <p>Field findings from an SMS agency visit in Bekasi.</p>
+                                </figcaption>
+                            </figure>
+                            <figure class="showcase-item">
+                                <div class="showcase-thumb">
+                                    <img src="images/pam/booth-thumb.webp" data-full="images/pam/booth.webp"
+                                        alt="Telkomsel 5G &amp; IndiHome Booth" data-caption="Telkomsel 5G &amp; IndiHome Booth — On-site product exposure during the internship." class="showcase-img" loading="lazy">
+                                    <span class="showcase-zoom" aria-hidden="true">⤢</span>
+                                </div>
+                                <figcaption>
+                                    <h4>Telkomsel 5G &amp; IndiHome Booth</h4>
+                                    <p>On-site product exposure during the internship.</p>
+                                </figcaption>
+                            </figure>
+                            <figure class="showcase-item">
+                                <div class="showcase-thumb">
+                                    <img src="images/pam/sosialisasi-thumb.webp" data-full="images/pam/sosialisasi.webp"
+                                        alt="Product Socialization" data-caption="Product Socialization — Socialization session for new products and programs." class="showcase-img" loading="lazy">
+                                    <span class="showcase-zoom" aria-hidden="true">⤢</span>
+                                </div>
+                                <figcaption>
+                                    <h4>Product Socialization</h4>
+                                    <p>Socialization session for new products and programs.</p>
+                                </figcaption>
+                            </figure>
+                            <figure class="showcase-item">
+                                <div class="showcase-thumb">
+                                    <img src="images/pam/meeting-thumb.webp" data-full="images/pam/meeting.webp"
+                                        alt="Team Meeting" data-caption="Team Meeting — Meeting with the Product Acquisition team." class="showcase-img" loading="lazy">
+                                    <span class="showcase-zoom" aria-hidden="true">⤢</span>
+                                </div>
+                                <figcaption>
+                                    <h4>Team Meeting</h4>
+                                    <p>Meeting with the Product Acquisition team.</p>
+                                </figcaption>
+                            </figure>
+                            <figure class="showcase-item">
+                                <div class="showcase-thumb">
+                                    <img src="images/pam/team-thumb.webp" data-full="images/pam/team.webp"
+                                        alt="Field Visit Team" data-caption="Field Visit Team — Market visit with the team." class="showcase-img" loading="lazy">
+                                    <span class="showcase-zoom" aria-hidden="true">⤢</span>
+                                </div>
+                                <figcaption>
+                                    <h4>Field Visit Team</h4>
+                                    <p>Market visit with the team.</p>
+                                </figcaption>
+                            </figure>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1103,7 +1541,7 @@
                                     <span class="journal-tag">Object Detection</span>
                                     <span class="journal-tag">Computer Vision</span>
                                     <span class="journal-tag">Deep Learning</span>
-                                    <pan class="journal-tag">YOLOv8</span>
+                                    <span class="journal-tag">YOLOv8</span>
                                 </div>
                             </div>
                         </div>
@@ -1135,7 +1573,7 @@
                                     <span class="journal-tag">Occluded Object Detection</span>
                                     <span class="journal-tag">Computer Vision</span>
                                     <span class="journal-tag">Deep Learning</span>
-                                    <pan class="journal-tag">Generative Adversarial Networks</span>
+                                    <span class="journal-tag">Generative Adversarial Networks</span>
                                 </div>
                             </div>
                         </div>
@@ -1191,8 +1629,27 @@
                             <div class="achievement-icon">💼</div>
                             <div class="achievement-content">
                                 <h4>Professional Experience</h4>
-                                <p class="achievement-stat"><strong>3</strong> Internships</p>
-                                <p class="achievement-description">Telkomsel • BCA Digital • Telkom Indonesia</p>
+                                <p class="achievement-stat"><strong>5</strong> Roles</p>
+                                <p class="achievement-description">Telkomsel (2 contract, 1 intern) • BCA Digital • Telkom Indonesia</p>
+                            </div>
+                        </div>
+
+                        <div class="achievement-highlight">
+                            <div class="achievement-icon">📜</div>
+                            <div class="achievement-content">
+                                <h4>Certifications</h4>
+                                <p class="achievement-stat"><strong>2</strong> Certificates · 2026</p>
+                                <p class="achievement-description">Google Data Analytics (Google) • Excel Skills for
+                                    Business (Macquarie University)</p>
+                            </div>
+                        </div>
+
+                        <div class="achievement-highlight">
+                            <div class="achievement-icon">⚡</div>
+                            <div class="achievement-content">
+                                <h4>Process Automation</h4>
+                                <p class="achievement-stat"><strong>97%</strong> Faster</p>
+                                <p class="achievement-description">3 reporting workflows automated with Python (6 hours → 5–10 minutes)</p>
                             </div>
                         </div>
 
@@ -1349,8 +1806,8 @@
                 <div class="container">
                     <h3 class="section-title" data-label="Contact">Get In Touch</h3>
                     <div class="contact-wrapper">
-                        <p>I'm always interested in new opportunities and exciting projects. Let's discuss how we can
-                            work together to drive business growth through data-driven insights.</p>
+                        <p>Open to conversations about data analytics, customer experience, and automation. Let's talk
+                            about how data can make your customers' journey simpler.</p>
                         <div class="contact-info">
                             <div class="contact-item">
                                 <h4>Email</h4>
@@ -1400,6 +1857,8 @@
                     <a href="#aboutme">About Me</a>
                     <a href="#skills">Skills</a>
                     <a href="#experience">Experience</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#gallery">Gallery</a>
                     <a href="#achievement">Achievement</a>
                     <a href="#journal">Journal</a>
                 </div>
@@ -1444,11 +1903,13 @@
         </div>
 
         <div class="footer-bottom">
-            <p>&copy; 2025 Muhammad Fahmi Hidayat. All Rights Reserved.</p>
+            <p>&copy; 2026 Muhammad Fahmi Hidayat. All Rights Reserved.</p>
             <nav>
                 <a href="#">User Terms & Conditions</a> |
                 <a href="#">Privacy Policy</a>
             </nav>
+        </div>
+    </footer>
             <!-- Custom Cursor -->
             <div class="cursor-dot"></div>
             <div class="cursor-outline"></div>
