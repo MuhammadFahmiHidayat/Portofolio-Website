@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Case studies · Muhammad Fahmi Hidayat</title>
+<meta name="description" content="Five case studies: tNPS reporting automation, GraPARI Express standardization, ISP benchmarking, city clustering and hospital asset detection.">
+<meta name="author" content="Muhammad Fahmi Hidayat">
+<meta property="og:title" content="Case studies · Muhammad Fahmi Hidayat">
+<meta property="og:description" content="Five case studies: tNPS reporting automation, GraPARI Express standardization, ISP benchmarking, city clustering and hospital asset detection.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="images/site/fahmi.webp">
+<link rel="icon" href="images/site/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>Fahmi Hidayat</a>
+    <button class="menu-btn press ease" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    <nav class="nav-links" id="nav-links" aria-label="Main">
+      <a class="ease" href="index.html">Home</a>
+      <a class="ease" href="projects.html">Projects</a>
+      <a class="ease" href="case-studies.html" aria-current="page">Case studies</a>
+      <a class="ease" href="gallery.html">Gallery</a>
+      <a class="ease" href="credentials.html">Credentials</a>
+      <a class="ease" href="about.html">About</a>
+      <a class="btn btn-primary press ease" href="about.html#contact">Hire me</a>
+    </nav>
+  </div>
+</header>
+<div class="wrap cs-layout">
+  <aside class="toc" aria-label="On this page">
+    <span class="muted" style="font-size: 13px; padding: 0 12px 8px">On this page</span>
+      <a href="#tnps"><span class="n">01</span><span class="l">tNPS reporting automation</span></a>
+      <a href="#gpx"><span class="n">02</span><span class="l">GraPARI Express standardization</span></a>
+      <a href="#isp"><span class="n">03</span><span class="l">ISP competitor benchmarking</span></a>
+      <a href="#cluster"><span class="n">04</span><span class="l">City clustering for IndiHome</span></a>
+      <a href="#hospital"><span class="n">05</span><span class="l">Hospital asset detection</span></a>
+    <a class="link-strong" href="projects.html" style="margin-top: 12px">All projects</a>
+  </aside>
+  <main id="main" class="stack" style="flex: 1 1 0; min-width: 0; gap: 40px">
+    <div class="stack" style="gap: 14px">
+      <h1 class="h1" style="max-width: 20ch">Five case studies, start to finish.</h1>
+      <p class="lede">Each one covers the problem, the approach step by step, the outcome and what I would keep doing. Screens are blurred for confidentiality.</p>
+    </div>
+    <article class="bezel case" id="tnps">
+      <div class="in">
+        <header class="stack" style="gap: 12px">
+          <span style="display: flex; flex-wrap: wrap; gap: 10px; align-items: center"><span class="mono" style="font-size: 13px; color: var(--accent)">01</span><span style="font-size: 14px; font-weight: 600; color: var(--muted)">Telkomsel, Self Service Operation and Engagement</span></span>
+          <h2 class="h2" style="font-size: clamp(1.8rem, 3.2vw, 2.6rem); max-width: 24ch">From a 6 hour reporting routine to a 10 minute upload.</h2>
+          <p class="lede" style="font-size: 17px; max-width: 62ch">Three recurring reports were assembled by hand with Excel macros and Power Automate. I rebuilt them as one Python reporting builder.</p>
+        </header>
+        <dl class="facts"><div><dt>Role</dt><dd>Analyst and builder</dd></div><div><dt>Timeline</dt><dd>Jun to Oct 2026</dd></div><div><dt>Tools</dt><dd>Python, Excel</dd></div><div><dt>Scope</dt><dd>3 reporting workflows</dd></div></dl>
+        <div class="results"><div><b>97%</b><span>faster per run</span></div><div><b>6 h → 10 min</b><span>processing time</span></div><div><b>3</b><span>workflows automated</span></div></div>
+        <section class="stack" style="gap: 10px"><h3 class="h3">The problem</h3><p class="muted" style="margin: 0; font-size: 16px; line-height: 1.7; max-width: 66ch">Each run meant collecting channel exports, pasting them into macro-driven workbooks and waiting on Power Automate flows. It took about six hours, and every manual step was a chance for an error to reach stakeholders.</p></section>
+        <section class="stack" style="gap: 14px"><h3 class="h3">The approach</h3><ol class="steps"><li><span class="n">Step 1</span><b>Upload</b><p>Drop each channel export into the builder.</p></li><li><span class="n">Step 2</span><b>Clean and validate</b><p>Python standardizes columns and flags missing files.</p></li><li><span class="n">Step 3</span><b>Generate</b><p>tNPS and traffic tables and charts are built automatically.</p></li><li><span class="n">Step 4</span><b>Preview and export</b><p>Review, then export the report for stakeholders.</p></li></ol><div class="figs"><figure><img src="images/ssoe/tnps-builder.webp" alt="Upload screen" loading="lazy"><figcaption>Upload screen</figcaption></figure><figure><img src="images/ssoe/tnps-output.webp" alt="Generated charts" loading="lazy"><figcaption>Generated charts</figcaption></figure><figure><img src="images/ssoe/tnps-preview.webp" alt="Preview and export" loading="lazy"><figcaption>Preview and export</figcaption></figure></div></section>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 20px">
+          <section class="stack" style="gap: 10px"><h3 class="h3">Minutes instead of hours</h3><p class="muted" style="margin: 0; font-size: 16px; line-height: 1.7">Reports that used to take most of a working day are ready in minutes, so the team spends that time reading the numbers instead of assembling them.</p></section>
+          <aside class="learn"><span class="k">What I learned</span><p style="margin: 0; line-height: 1.6">Automating a report starts with writing down every manual step. Once the process is mapped, the code is the easy part.</p><span class="tags"><span>Python</span><span>Excel</span><span>Automation</span><span>tNPS</span></span></aside>
+        </div>
+      </div>
+    </article>
+    <article class="bezel case" id="gpx">
+      <div class="in">
+        <header class="stack" style="gap: 12px">
+          <span style="display: flex; flex-wrap: wrap; gap: 10px; align-items: center"><span class="mono" style="font-size: 13px; color: var(--accent)">02</span><span style="font-size: 14px; font-weight: 600; color: var(--muted)">Telkomsel, Self Service Operation and Engagement</span></span>
+          <h2 class="h2" style="font-size: clamp(1.8rem, 3.2vw, 2.6rem); max-width: 24ch">Four vendors, four formats, one standard.</h2>
+          <p class="lede" style="font-size: 17px; max-width: 62ch">Every GraPARI Express vendor sent transaction data in its own layout. I built a dashboard that maps them all into a single 23-column format.</p>
+        </header>
+        <dl class="facts"><div><dt>Role</dt><dd>Analyst and builder</dd></div><div><dt>Timeline</dt><dd>Jun to Oct 2026</dd></div><div><dt>Tools</dt><dd>Web dashboard</dd></div><div><dt>Scope</dt><dd>4 vendors</dd></div></dl>
+        <div class="results"><div><b>4 → 1</b><span>vendor formats unified</span></div><div><b>23</b><span>standard columns</span></div><div><b>0</b><span>manual reformatting</span></div></div>
+        <section class="stack" style="gap: 10px"><h3 class="h3">The problem</h3><p class="muted" style="margin: 0; font-size: 16px; line-height: 1.7; max-width: 66ch">Before any analysis, each vendor file had to be reshaped by hand so the columns lined up. It was slow, repetitive and easy to get wrong whenever a vendor changed its layout.</p></section>
+        <section class="stack" style="gap: 14px"><h3 class="h3">The approach</h3><ol class="steps"><li><span class="n">Step 1</span><b>Upload vendor files</b><p>Raw files from each vendor go into one tool.</p></li><li><span class="n">Step 2</span><b>Detect format</b><p>The tool recognizes which vendor layout it is.</p></li><li><span class="n">Step 3</span><b>Map columns</b><p>Each source column maps into the 23-column standard.</p></li><li><span class="n">Step 4</span><b>Review and export</b><p>An overview shows the standardized result.</p></li></ol><div class="figs"><figure><img src="images/ssoe/gpx-upload.webp" alt="Vendor file upload" loading="lazy"><figcaption>Vendor file upload</figcaption></figure><figure><img src="images/ssoe/gpx-mapping.webp" alt="Column mapping" loading="lazy"><figcaption>Column mapping</figcaption></figure><figure><img src="images/ssoe/gpx-overview.webp" alt="Standardized overview" loading="lazy"><figcaption>Standardized overview</figcaption></figure></div></section>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 20px">
+          <section class="stack" style="gap: 10px"><h3 class="h3">Analysis starts immediately</h3><p class="muted" style="margin: 0; font-size: 16px; line-height: 1.7">Transaction data from all four vendors arrives in one format, so comparing vendors no longer needs a manual clean-up step.</p></section>
+          <aside class="learn"><span class="k">What I learned</span><p style="margin: 0; line-height: 1.6">A shared data standard is a product in itself. Agreeing on the 23 columns mattered as much as the tool that enforces them.</p><span class="tags"><span>Data mapping</span><span>Dashboard</span><span>Data quality</span></span></aside>
+        </div>
+      </div>
+    </article>
+    <article class="bezel case" id="isp">
+      <div class="in">
+        <header class="stack" style="gap: 12px">
+          <span style="display: flex; flex-wrap: wrap; gap: 10px; align-items: center"><span class="mono" style="font-size: 13px; color: var(--accent)">03</span><span style="font-size: 14px; font-weight: 600; color: var(--muted)">Telkomsel, Product Acquisition Marketing</span></span>
+          <h2 class="h2" style="font-size: clamp(1.8rem, 3.2vw, 2.6rem); max-width: 24ch">Benchmarking 8 ISPs in 503 cities in one day, not fourteen.</h2>
+          <p class="lede" style="font-size: 17px; max-width: 62ch">Competitor packages and prices were collected by hand, city by city. I automated it with a Python scraper and fed the result into Tableau.</p>
+        </header>
+        <dl class="facts"><div><dt>Role</dt><dd>Data analyst intern</dd></div><div><dt>Timeline</dt><dd>Nov 2025 to May 2026</dd></div><div><dt>Tools</dt><dd>Python, Selenium, BS4, Tableau</dd></div><div><dt>Scope</dt><dd>8 ISPs, 503 cities</dd></div></dl>
+        <div class="results"><div><b>98%</b><span>less manual work</span></div><div><b>14 → 1 day</b><span>analysis cycle</span></div><div><b>503</b><span>cities covered</span></div></div>
+        <section class="stack" style="gap: 10px"><h3 class="h3">The problem</h3><p class="muted" style="margin: 0; font-size: 16px; line-height: 1.7; max-width: 66ch">Each ISP website lists packages and prices per city. Checking 8 competitors across every city by hand took about 14 days, so the benchmark was always out of date.</p></section>
+        <section class="stack" style="gap: 14px"><h3 class="h3">The approach</h3><ol class="steps"><li><span class="n">Step 1</span><b>Build scrapers</b><p>Selenium and BeautifulSoup, one per ISP website.</p></li><li><span class="n">Step 2</span><b>Run all cities</b><p>An automated loop across all 503 cities.</p></li><li><span class="n">Step 3</span><b>Structure</b><p>Packages and prices cleaned into one comparable table.</p></li><li><span class="n">Step 4</span><b>Visualize and document</b><p>Tableau dashboard and hand-over documentation.</p></li></ol><div class="figs"><figure><img src="images/pam/scraper-code.webp" alt="Scraper code" loading="lazy"><figcaption>Scraper code</figcaption></figure><figure><img src="images/pam/scraper-run.webp" alt="Run across 503 cities" loading="lazy"><figcaption>Run across 503 cities</figcaption></figure><figure><img src="images/pam/scraper-doc.webp" alt="Tool documentation" loading="lazy"><figcaption>Tool documentation</figcaption></figure></div></section>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 20px">
+          <section class="stack" style="gap: 10px"><h3 class="h3">A benchmark you can refresh any time</h3><p class="muted" style="margin: 0; font-size: 16px; line-height: 1.7">What took two weeks now takes a day, so pricing and package decisions can rest on current competitor data.</p></section>
+          <aside class="learn"><span class="k">What I learned</span><p style="margin: 0; line-height: 1.6">Scrapers break when websites change. Clear documentation and one structure per site keep the tool usable after hand-over.</p><span class="tags"><span>Python</span><span>Selenium</span><span>BeautifulSoup</span><span>Tableau</span></span></aside>
+        </div>
+      </div>
+    </article>
+    <article class="bezel case" id="cluster">
+      <div class="in">
+        <header class="stack" style="gap: 12px">
+          <span style="display: flex; flex-wrap: wrap; gap: 10px; align-items: center"><span class="mono" style="font-size: 13px; color: var(--accent)">04</span><span style="font-size: 14px; font-weight: 600; color: var(--muted)">Telkomsel, Product Acquisition Marketing</span></span>
+          <h2 class="h2" style="font-size: clamp(1.8rem, 3.2vw, 2.6rem); max-width: 24ch">Three city tiers to target the IndiHome revamp.</h2>
+          <p class="lede" style="font-size: 17px; max-width: 62ch">One offer for every city ignores large economic differences. I segmented cities by economic capacity and growth with K-Means and GMM.</p>
+        </header>
+        <dl class="facts"><div><dt>Role</dt><dd>Data analyst intern</dd></div><div><dt>Timeline</dt><dd>Nov 2025 to May 2026</dd></div><div><dt>Tools</dt><dd>Python, K-Means, GMM</dd></div><div><dt>Data</dt><dd>GRDP 2020 to 2024</dd></div></dl>
+        <div class="results"><div><b>3</b><span>city tiers</span></div><div><b>k = 3</b><span>K-Means clusters</span></div><div><b>2</b><span>methods compared</span></div></div>
+        <section class="stack" style="gap: 10px"><h3 class="h3">The problem</h3><p class="muted" style="margin: 0; font-size: 16px; line-height: 1.7; max-width: 66ch">The revamp needed to know where premium offers make sense and where affordability matters more, which a national average cannot show.</p></section>
+        <section class="stack" style="gap: 14px"><h3 class="h3">The approach</h3><ol class="steps"><li><span class="n">Step 1</span><b>Collect</b><p>GRDP and GRDP per capita 2020 to 2024 per city.</p></li><li><span class="n">Step 2</span><b>Prepare</b><p>Log transformation and z-score standardization.</p></li><li><span class="n">Step 3</span><b>Cluster</b><p>K-Means with k = 3, compared with a Gaussian Mixture Model.</p></li><li><span class="n">Step 4</span><b>Add growth</b><p>PDRB CAGR: Growing above 8%, Stable 2 to 8%, Under-perform below 2%.</p></li></ol><div class="figs"><figure><img src="images/pam/clustering.webp" alt="Primary clustering result" loading="lazy"><figcaption>Primary clustering result</figcaption></figure><figure><img src="images/pam/clustering-2.webp" alt="Consumption-based variant" loading="lazy"><figcaption>Consumption-based variant</figcaption></figure></div></section>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 20px">
+          <section class="stack" style="gap: 10px"><h3 class="h3">Metropolitan, Regional Growth, Emerging and Rural</h3><p class="muted" style="margin: 0; font-size: 16px; line-height: 1.7">Each city now sits in one of three tiers with a growth label, a clearer basis for deciding which offer goes where.</p></section>
+          <aside class="learn"><span class="k">What I learned</span><p style="margin: 0; line-height: 1.6">Clusters only matter when they can be named and explained to a non-technical audience. The tier names did as much work as the algorithm.</p><span class="tags"><span>Python</span><span>K-Means</span><span>GMM</span><span>Segmentation</span></span></aside>
+        </div>
+      </div>
+    </article>
+    <article class="bezel case" id="hospital">
+      <div class="in">
+        <header class="stack" style="gap: 12px">
+          <span style="display: flex; flex-wrap: wrap; gap: 10px; align-items: center"><span class="mono" style="font-size: 13px; color: var(--accent)">05</span><span style="font-size: 14px; font-weight: 600; color: var(--muted)">Telkom University, thesis, published</span></span>
+          <h2 class="h2" style="font-size: clamp(1.8rem, 3.2vw, 2.6rem); max-width: 24ch">Finding partly hidden medical equipment with computer vision.</h2>
+          <p class="lede" style="font-size: 17px; max-width: 62ch">Hospitals lose track of equipment that is partly blocked from view. My thesis combined YOLOv8 with GAN-generated training data to detect it.</p>
+        </header>
+        <dl class="facts"><div><dt>Role</dt><dd>Lead author</dd></div><div><dt>Year</dt><dd>2025</dd></div><div><dt>Tools</dt><dd>Python, YOLOv8, GAN</dd></div><div><dt>Venues</dt><dd>IEEE ICADEIS, Journal Infotel</dd></div></dl>
+        <div class="results"><div><b>Best Paper</b><span>Journal Infotel Vol. 17 No. 1</span></div><div><b>2</b><span>publications</span></div><div><b>ICADEIS</b><span>conference presenter</span></div></div>
+        <section class="stack" style="gap: 10px"><h3 class="h3">The problem</h3><p class="muted" style="margin: 0; font-size: 16px; line-height: 1.7; max-width: 66ch">Partly obscured medical equipment makes inventory tracking unreliable, and real training images of occluded assets are scarce.</p></section>
+        <section class="stack" style="gap: 14px"><h3 class="h3">The approach</h3><ol class="steps"><li><span class="n">Step 1</span><b>Dataset</b><p>Images of hospital assets, including occluded cases.</p></li><li><span class="n">Step 2</span><b>Augment</b><p>Generative Adversarial Networks create extra training samples.</p></li><li><span class="n">Step 3</span><b>Detect</b><p>YOLOv8 trained on the combined data.</p></li><li><span class="n">Step 4</span><b>Publish</b><p>Presented at ICADEIS 2025 and published in Journal Infotel.</p></li></ol><div class="figs"><figure><img src="images/site/jurnal-1.webp" alt="IEEE ICADEIS 2025 paper" loading="lazy"><figcaption>IEEE ICADEIS 2025 paper</figcaption></figure><figure><img src="images/site/jurnal-2.webp" alt="Journal Infotel article" loading="lazy"><figcaption>Journal Infotel article</figcaption></figure></div></section>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 20px">
+          <section class="stack" style="gap: 10px"><h3 class="h3">Peer-reviewed and awarded</h3><p class="muted" style="margin: 0; font-size: 16px; line-height: 1.7">The work was published in two venues and received the Best Paper Award in Journal Infotel.</p></section>
+          <aside class="learn"><span class="k">What I learned</span><p style="margin: 0; line-height: 1.6">Synthetic data helps when real data is scarce, but evaluation has to stay on real images to be trusted.</p><span class="tags"><span>Computer vision</span><span>YOLOv8</span><span>GAN</span><span>Python</span></span></aside>
+        </div>
+      </div>
+    </article>
+  </main>
+</div>
+<footer class="foot">
+  <div class="wrap">
+    <span>© 2026 Muhammad Fahmi Hidayat, Bekasi</span>
+    <nav aria-label="Profiles"><a href="https://www.linkedin.com/in/muhammad-fahmi-hidayat">LinkedIn</a><a href="https://github.com/MuhammadFahmiHidayat">GitHub</a><a href="https://public.tableau.com/app/profile/muhammad.fahmi.hidayat/vizzes">Tableau Public</a><a href="https://scholar.google.com/citations?hl=id&amp;user=uIx03nAAAAAJ">Google Scholar</a></nav>
+  </div>
+</footer>
+<script src="assets/site.js"></script>
+</body>
+</html>

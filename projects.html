@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Projects · Muhammad Fahmi Hidayat</title>
+<meta name="description" content="Nine data projects: question, data, method and result. Automation, dashboards, SQL, machine learning and market research.">
+<meta name="author" content="Muhammad Fahmi Hidayat">
+<meta property="og:title" content="Projects · Muhammad Fahmi Hidayat">
+<meta property="og:description" content="Nine data projects: question, data, method and result. Automation, dashboards, SQL, machine learning and market research.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="images/site/fahmi.webp">
+<link rel="icon" href="images/site/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>Fahmi Hidayat</a>
+    <button class="menu-btn press ease" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    <nav class="nav-links" id="nav-links" aria-label="Main">
+      <a class="ease" href="index.html">Home</a>
+      <a class="ease" href="projects.html" aria-current="page">Projects</a>
+      <a class="ease" href="case-studies.html">Case studies</a>
+      <a class="ease" href="gallery.html">Gallery</a>
+      <a class="ease" href="credentials.html">Credentials</a>
+      <a class="ease" href="about.html">About</a>
+      <a class="btn btn-primary press ease" href="about.html#contact">Hire me</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap stack" style="padding-top: 64px; padding-bottom: 112px; gap: 36px">
+  <div class="stack" style="gap: 18px">
+    <h1 class="h1 rise" style="max-width: 22ch">Nine analyses: question, data, method, result.</h1>
+    <p class="lede rise d1">Filter by type, then pick a project to read it in full. Five of them have a deeper case study.</p>
+    <div class="pills rise d2" role="group" aria-label="Filter projects">
+        <button type="button" class="pill press ease" data-filter="all" aria-pressed="true">All<span class="count">9</span></button>
+        <button type="button" class="pill press ease" data-filter="auto" aria-pressed="false">Automation<span class="count">2</span></button>
+        <button type="button" class="pill press ease" data-filter="dash" aria-pressed="false">Dashboards and SQL<span class="count">3</span></button>
+        <button type="button" class="pill press ease" data-filter="ml" aria-pressed="false">Machine learning<span class="count">2</span></button>
+        <button type="button" class="pill press ease" data-filter="mkt" aria-pressed="false">Market and growth<span class="count">2</span></button>
+    </div>
+  </div>
+
+  <article class="bezel detail" id="detail" aria-live="polite" style="scroll-margin-top: 90px; box-shadow: 0 36px 70px -48px rgba(15, 60, 58, .45)">
+    <div class="in">
+      <img id="d-img" src="images/ssoe/tnps-output-thumb.webp" alt="Blurred automated tNPS report">
+      <div class="detail-body">
+        <span id="d-org" style="font-size: 14px; font-weight: 600; color: var(--accent-dark)">Telkomsel, 2026</span>
+        <h2 id="d-title" style="margin: 0; font-weight: 800; font-size: 28px; line-height: 1.18; letter-spacing: -.02em">tNPS reporting automation</h2>
+        <dl class="qdmr">
+          <dt>Question</dt><dd id="d-q">Can recurring tNPS and traffic reports be produced without a six hour manual run?</dd>
+          <dt>Data</dt><dd id="d-d">Channel exports for 3 workflows built on Excel macros and Power Automate.</dd>
+          <dt>Method</dt><dd id="d-m">A Python reporting builder: upload, clean, generate, preview, export.</dd>
+          <dt class="res">Result</dt><dd class="res" id="d-r">6 hours down to 5 to 10 minutes per run, 97% faster.</dd>
+        </dl>
+        <div class="tags" id="d-tags"><span class="tag">Python</span><span class="tag">Automation</span><span class="tag">tNPS</span><span class="tag">Reporting</span></div>
+        <a id="d-case" class="btn btn-primary press ease" href="case-studies.html#tnps" style="align-self: flex-start">Read the case study <span class="knob"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+      </div>
+    </div>
+  </article>
+
+  <div class="pgrid">
+      <button type="button" class="pcard lift press ease" data-idx="0" data-cat="auto" aria-pressed="true">
+        <img src="images/ssoe/tnps-output-thumb.webp" alt="" loading="lazy">
+        <span class="meta"><span class="t">tNPS reporting automation</span><span class="m">6 h → 10 min</span></span>
+      </button>
+      <button type="button" class="pcard lift press ease" data-idx="1" data-cat="dash" aria-pressed="false">
+        <img src="images/ssoe/gpx-overview-thumb.webp" alt="" loading="lazy">
+        <span class="meta"><span class="t">GraPARI Express data standardization</span><span class="m">4 vendors → 1 format</span></span>
+      </button>
+      <button type="button" class="pcard lift press ease" data-idx="2" data-cat="dash" aria-pressed="false">
+        <img src="images/ssoe/figma-ticket-thumb.webp" alt="" loading="lazy">
+        <span class="meta"><span class="t">Trouble ticket dashboard prototype</span><span class="m">466 outlets</span></span>
+      </button>
+      <button type="button" class="pcard lift press ease" data-idx="3" data-cat="dash" aria-pressed="false">
+        <img src="images/ssoe/ssim-dashboard-thumb.webp" alt="" loading="lazy">
+        <span class="meta"><span class="t">KIP shifting and on-demand data</span><span class="m">8 channels monitored</span></span>
+      </button>
+      <button type="button" class="pcard lift press ease" data-idx="4" data-cat="auto" aria-pressed="false">
+        <img src="images/pam/scraper-run-thumb.webp" alt="" loading="lazy">
+        <span class="meta"><span class="t">ISP competitor benchmarking</span><span class="m">14 days → 1 day</span></span>
+      </button>
+      <button type="button" class="pcard lift press ease" data-idx="5" data-cat="ml" aria-pressed="false">
+        <img src="images/pam/clustering-thumb.webp" alt="" loading="lazy">
+        <span class="meta"><span class="t">City clustering and segmentation</span><span class="m">3 tiers, k = 3</span></span>
+      </button>
+      <button type="button" class="pcard lift press ease" data-idx="6" data-cat="ml" aria-pressed="false">
+        <img src="images/site/jurnal-2.webp" alt="" loading="lazy">
+        <span class="meta"><span class="t">Hospital asset detection</span><span class="m">Best Paper</span></span>
+      </button>
+      <button type="button" class="pcard lift press ease" data-idx="7" data-cat="mkt" aria-pressed="false">
+        <img src="images/pam/catalog-matrix-thumb.webp" alt="" loading="lazy">
+        <span class="meta"><span class="t">Agricultural market opportunities</span><span class="m">65 opportunities</span></span>
+      </button>
+      <button type="button" class="pcard lift press ease" data-idx="8" data-cat="mkt" aria-pressed="false">
+        <img src="images/bluclass.webp" alt="" loading="lazy">
+        <span class="meta"><span class="t">bluClass financial literacy campaign</span><span class="m">200+ and 150+ sign-ups</span></span>
+      </button>
+  </div>
+</main>
+<script type="application/json" id="projects-data">[{"org": "Telkomsel, 2026", "title": "tNPS reporting automation", "img": "images/ssoe/tnps-output-thumb.webp", "alt": "Blurred automated tNPS report", "metric": "6 h → 10 min", "caseId": "tnps", "q": "Can recurring tNPS and traffic reports be produced without a six hour manual run?", "d": "Channel exports for 3 workflows built on Excel macros and Power Automate.", "m": "A Python reporting builder: upload, clean, generate, preview, export.", "r": "6 hours down to 5 to 10 minutes per run, 97% faster.", "tags": ["Python", "Automation", "tNPS", "Reporting"]}, {"org": "Telkomsel, 2026", "title": "GraPARI Express data standardization", "img": "images/ssoe/gpx-overview-thumb.webp", "alt": "Blurred GraPARI Express standardization tool", "metric": "4 vendors → 1 format", "caseId": "gpx", "q": "How do we compare transactions when 4 vendors each send a different format?", "d": "Transaction files from 4 GraPARI Express vendors.", "m": "A dashboard that detects each vendor layout and maps it to a standard.", "r": "One 23-column format. Manual reformatting removed.", "tags": ["Dashboard", "Data mapping", "Data quality"]}, {"org": "Telkomsel, 2026", "title": "Trouble ticket dashboard prototype", "img": "images/ssoe/figma-ticket-thumb.webp", "alt": "Blurred Figma prototype", "metric": "466 outlets", "caseId": "", "q": "How can outlet trouble tickets show which vendor is responsible?", "d": "Ticket flow across 466 GraPARI outlets and 4 vendors.", "m": "A Figma UI and UX prototype, proposed to the IT team.", "r": "A dashboard design to improve vendor accountability.", "tags": ["Figma", "UI and UX", "Ticketing"]}, {"org": "Telkomsel, 2026", "title": "KIP shifting and on-demand data", "img": "images/ssoe/ssim-dashboard-thumb.webp", "alt": "Blurred self-service dashboard", "metric": "8 channels monitored", "caseId": "", "q": "Which complaint, information and request interactions can move to digital self-service?", "d": "KIP interactions across GraPARI, eCare, Call Center and self-service (Veronika, GraPARI Express, GraPARI Online, Nindy, IVR), pulled with SQL in Huawei Cloud DataArts Studio.", "m": "Channel and category breakdowns in recurring performance reports.", "r": "On-demand data and weekly and monthly reports for management.", "tags": ["SQL", "DataArts Studio", "KIP"]}, {"org": "Telkomsel, 2025 to 2026", "title": "ISP competitor benchmarking", "img": "images/pam/scraper-run-thumb.webp", "alt": "Blurred scraper run", "metric": "14 days → 1 day", "caseId": "isp", "q": "What do 8 ISP competitors offer and charge in every city?", "d": "Public package and pricing pages, 8 ISPs across 503 cities.", "m": "Python with Selenium and BeautifulSoup, then a Tableau dashboard.", "r": "Analysis cycle from 14 days to 1, 98% less manual work.", "tags": ["Python", "Selenium", "BeautifulSoup", "Tableau"]}, {"org": "Telkomsel, 2026", "title": "City clustering and segmentation", "img": "images/pam/clustering-thumb.webp", "alt": "Blurred city clustering slide", "metric": "3 tiers, k = 3", "caseId": "cluster", "q": "How should cities be grouped to target the IndiHome revamp?", "d": "GRDP and GRDP per capita 2020 to 2024, plus growth, per city.", "m": "Log transform, z-score, K-Means against a Gaussian Mixture Model.", "r": "Metropolitan, Regional Growth, Emerging and Rural tiers.", "tags": ["Python", "K-Means", "GMM", "Tableau"]}, {"org": "Thesis, 2025", "title": "Hospital asset detection", "img": "images/site/jurnal-2.webp", "alt": "Journal Infotel article page", "metric": "Best Paper", "caseId": "hospital", "q": "Can partly hidden medical equipment be detected reliably?", "d": "Images of hospital assets, extended with GAN-generated samples.", "m": "YOLOv8 object detection with Generative Adversarial Network augmentation.", "r": "Published in Journal Infotel (Best Paper) and IEEE ICADEIS 2025.", "tags": ["Computer vision", "YOLOv8", "GAN", "Python"]}, {"org": "Telkom Indonesia, 2023", "title": "Agricultural market opportunities", "img": "images/pam/catalog-matrix-thumb.webp", "alt": "Blurred spreadsheet", "metric": "65 opportunities", "caseId": "", "q": "Where can the Agree platform grow across agricultural commodities?", "d": "Market research on 3 commodities and outreach to potential clients.", "m": "Opportunity mapping, outreach by phone, chat and email, strategy decks.", "r": "65 opportunities, 25+ clients approached, 3 decks, 9 Minutes of Meeting.", "tags": ["Market research", "Business analysis", "Google Slides"]}, {"org": "BCA Digital, 2024", "title": "bluClass financial literacy campaign", "img": "images/bluclass.webp", "alt": "Fahmi with the bluClass team in front of a blu banner, BCA Digital", "metric": "200+ and 150+ sign-ups", "caseId": "", "q": "Can a campus seminar grow blu app sign-ups and financial literacy?", "d": "Attendance and sign-up tracking, with 15 student ambassadors.", "m": "Planned the bluClass seminar and led the bluAmbassadors program.", "r": "200+ participants and 150+ new app sign-ups.", "tags": ["Event analytics", "Campaign", "Brand strategy"]}]</script>
+<footer class="foot">
+  <div class="wrap">
+    <span>© 2026 Muhammad Fahmi Hidayat. Screens are blurred for confidentiality.</span>
+    <nav aria-label="Profiles"><a href="https://www.linkedin.com/in/muhammad-fahmi-hidayat">LinkedIn</a><a href="https://github.com/MuhammadFahmiHidayat">GitHub</a><a href="https://public.tableau.com/app/profile/muhammad.fahmi.hidayat/vizzes">Tableau Public</a><a href="https://scholar.google.com/citations?hl=id&amp;user=uIx03nAAAAAJ">Google Scholar</a></nav>
+  </div>
+</footer>
+<script src="assets/site.js"></script>
+</body>
+</html>
