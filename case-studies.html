@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Case studies · Muhammad Fahmi Hidayat</title>
-<meta name="description" content="Five case studies: tNPS reporting automation, GraPARI Express standardization, ISP benchmarking, city clustering and hospital asset detection.">
+<meta name="description" content="Six case studies: tNPS reporting automation, GraPARI Express standardization, ISP benchmarking, city clustering, hospital asset detection and Rekapin ticket and order reports.">
 <meta name="author" content="Muhammad Fahmi Hidayat">
 <meta property="og:title" content="Case studies · Muhammad Fahmi Hidayat">
-<meta property="og:description" content="Five case studies: tNPS reporting automation, GraPARI Express standardization, ISP benchmarking, city clustering and hospital asset detection.">
+<meta property="og:description" content="Six case studies: tNPS reporting automation, GraPARI Express standardization, ISP benchmarking, city clustering, hospital asset detection and Rekapin ticket and order reports.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="images/site/fahmi.webp">
 <link rel="icon" href="images/site/favicon.svg" type="image/svg+xml">
@@ -41,11 +41,12 @@
       <a href="#isp"><span class="n">03</span><span class="l">ISP competitor benchmarking</span></a>
       <a href="#cluster"><span class="n">04</span><span class="l">City clustering for IndiHome</span></a>
       <a href="#hospital"><span class="n">05</span><span class="l">Hospital asset detection</span></a>
+      <a href="#rekapin"><span class="n">06</span><span class="l">Rekapin ticket and order reports</span></a>
     <a class="link-strong" href="projects.html" style="margin-top: 12px">All projects</a>
   </aside>
   <main id="main" class="stack" style="flex: 1 1 0; min-width: 0; gap: 40px">
     <div class="stack" style="gap: 14px">
-      <h1 class="h1" style="max-width: 20ch">Five case studies, start to finish.</h1>
+      <h1 class="h1" style="max-width: 20ch">Six case studies, start to finish.</h1>
       <p class="lede">Each one covers the problem, the approach step by step, the outcome and what I would keep doing. Screens are blurred for confidentiality.</p>
     </div>
     <article class="bezel case" id="tnps">
@@ -130,6 +131,23 @@
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 20px">
           <section class="stack" style="gap: 10px"><h3 class="h3">Peer-reviewed and awarded</h3><p class="muted" style="margin: 0; font-size: 16px; line-height: 1.7">The work was published in two venues and received the Best Paper Award in Journal Infotel.</p></section>
           <aside class="learn"><span class="k">What I learned</span><p style="margin: 0; line-height: 1.6">Synthetic data helps when real data is scarce, but evaluation has to stay on real images to be trusted.</p><span class="tags"><span>Computer vision</span><span>YOLOv8</span><span>GAN</span><span>Python</span></span></aside>
+        </div>
+      </div>
+    </article>
+    <article class="bezel case" id="rekapin">
+      <div class="in">
+        <header class="stack" style="gap: 12px">
+          <span style="display: flex; flex-wrap: wrap; gap: 10px; align-items: center"><span class="mono" style="font-size: 13px; color: var(--accent)">06</span><span style="font-size: 14px; font-weight: 600; color: var(--muted)">Telkomsel, Data Reporting Analyst</span></span>
+          <h2 class="h2" style="font-size: clamp(1.8rem, 3.2vw, 2.6rem); max-width: 24ch">From 5 to 6 hours of Excel work to a 10 minute upload.</h2>
+          <p class="lede" style="font-size: 17px; max-width: 62ch">Monthly ticket and order reports meant downloading huge Hadoop files and working in slow Excel workbooks. I built Rekapin, a browser tool that does the same steps from one upload.</p>
+        </header>
+        <dl class="facts"><div><dt>Role</dt><dd>Analyst and builder</dd></div><div><dt>Timeline</dt><dd>Oct 2026 to now</dd></div><div><dt>Tools</dt><dd>TypeScript, React, Excel</dd></div><div><dt>Scope</dt><dd>Ticket Fixed and Order reports</dd></div></dl>
+        <div class="results"><div><b>5–6 h → &lt;10 min</b><span>per monthly report</span></div><div><b>0</b><span>differences from the Excel results</span></div><div><b>12</b><span>PivotTables per month</span></div></div>
+        <section class="stack" style="gap: 10px"><h3 class="h3">The problem</h3><p class="muted" style="margin: 0; font-size: 16px; line-height: 1.7; max-width: 66ch">Each month the Hadoop exports for fixed tickets and orders had to be downloaded, cleaned and loaded into Excel templates. The files were large, Excel was slow and sometimes froze, and the formulas and pivots were rebuilt every time. The routine took five to six hours, and the same numbers fed the weekly and monthly customer care decks.</p></section>
+        <section class="stack" style="gap: 14px"><h3 class="h3">The approach</h3><ol class="steps"><li><span class="n">Step 1</span><b>Upload</b><p>Drop the monthly Hadoop CSV into the page.</p></li><li><span class="n">Step 2</span><b>Clean and map</b><p>Broken rows are fixed and columns are matched by header name.</p></li><li><span class="n">Step 3</span><b>Calculate</b><p>The same formulas as the Excel template: SLA, LAPUL, GAUL, close rate, ISLA and OSLA.</p></li><li><span class="n">Step 4</span><b>Export</b><p>One Excel file with PivotTables, plus a quick summary by week and region.</p></li></ol><div class="figs"><figure><img src="images/ssoe/rekapin-upload.webp" alt="Blurred upload screen" loading="lazy"><figcaption>Upload screen</figcaption></figure><figure><img src="images/ssoe/rekapin-processing.webp" alt="Blurred processing screen" loading="lazy"><figcaption>Processing</figcaption></figure><figure><img src="images/ssoe/rekapin-report.webp" alt="Blurred report view" loading="lazy"><figcaption>Report view</figcaption></figure></div></section>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 20px">
+          <section class="stack" style="gap: 10px"><h3 class="h3">Same answers, much faster</h3><p class="muted" style="margin: 0; font-size: 16px; line-height: 1.7">I compared the output with the manual Excel results, 201,321 rows by 15 formula columns for tickets and cell by cell for orders, and found no differences. A 900 MB ticket file takes about 80 seconds in Chrome, and the file stays in the browser.</p></section>
+          <aside class="learn"><span class="k">What I learned</span><p style="margin: 0; line-height: 1.6">A shortcut is only useful if it gives the exact same numbers. I trusted Rekapin only after checking it against the Excel output row by row.</p><span class="tags"><span>TypeScript</span><span>React</span><span>Excel</span><span>Reporting</span></span></aside>
         </div>
       </div>
     </article>
